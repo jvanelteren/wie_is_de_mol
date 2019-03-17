@@ -1,13 +1,13 @@
 import math
 import random
-
 from ProbabilityDistribution import ProbabilityDistribution, DataError
 
-""" A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
- or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
 class ExamDistribution(ProbabilityDistribution):
-    """ Performs a simulation based on how the questions are filled in """
+    """ A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
+     or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
+
     def __init__(self, data, num_runs, precision):
+        """ Performs a simulation based on how the questions are filled in """
         self.data = data
         self.num_runs = num_runs
         self.precision = precision

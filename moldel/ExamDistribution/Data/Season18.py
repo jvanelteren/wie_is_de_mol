@@ -177,5 +177,7 @@ episode8 = Episode(players8, result8,
                    {'Jan': TestInput({7: 2, 20: 3}), 'Ruben': TestInput({20: 1}), 'Olcay': TestInput({20: 3}),
                     'Simone': TestInput({20: 3})},
                    {7: question8_7, 20: question8_20})
+
+
 season18 = (players1, {1: episode1, 2: episode2, 3: episode3, 4: episode4, 5: episode5, 6: episode6, 7: episode7,
                        8: episode8})
