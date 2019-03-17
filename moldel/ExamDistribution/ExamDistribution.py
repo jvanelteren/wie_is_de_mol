@@ -1,7 +1,7 @@
 import math
 import random
 
-from ProbabilityDistribution import ProbabilityDistribution
+from ProbabilityDistribution import ProbabilityDistribution, DataError
 
 """ A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
  or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
@@ -13,6 +13,8 @@ class ExamDistribution(ProbabilityDistribution):
         self.precision = precision
 
     def compute_distribution(self, season, episode):
+        if season not in self.data:
+            raise DataError("Exam Distribution - Missing data season " + str(season))
         players = self.data[season][0]
         episodes = self.load_episodes(season, episode)
         mol_prob = dict()
@@ -22,7 +24,7 @@ class ExamDistribution(ProbabilityDistribution):
                 prob *= self.episode_simulate(e, mol)
             mol_prob[mol] = prob
         self.normalize(mol_prob, players)
-        print(mol_prob)
+        return mol_prob
 
     def load_episodes(self, season, episode):
         if episode is None:

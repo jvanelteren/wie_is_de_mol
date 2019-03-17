@@ -31,7 +31,6 @@ question1_12 = Question({1: ['Evelien'],
 question1_16 = Question({1: ['Evi', 'Robert', 'Nikkie', 'Merel', 'Sarah'],
                          2: ['Evelien', 'Niels', 'Sinan'],
                          3: ['Jamie', 'Rick']})
-test1_niels = TestInput({4: 2})
 result1 = Result(False, ['Evelien', 'Robert', 'Nikkie', 'Evi'])
 episode1 = Episode(players1, result1,
                    {'Niels': TestInput({4: 2}), 'Evelien': TestInput({11: 1}), 'Jamie': TestInput({1: 1}),
