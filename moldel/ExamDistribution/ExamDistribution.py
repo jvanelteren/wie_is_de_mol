@@ -1,16 +1,17 @@
 import math
 import random
+
+from DistributionTransformers.NormalizeTransformer import NormalizeTransformer
 from ProbabilityDistribution import ProbabilityDistribution, DataError
 
 class ExamDistribution(ProbabilityDistribution):
     """ A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
      or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
 
-    def __init__(self, data, num_runs, precision):
+    def __init__(self, data, num_runs):
         """ Performs a simulation based on how the questions are filled in """
         self.data = data
         self.num_runs = num_runs
-        self.precision = precision
 
     def compute_distribution(self, season, episode):
         if season not in self.data:
@@ -27,8 +28,8 @@ class ExamDistribution(ProbabilityDistribution):
                 for e in episodes:
                     prob *= self.episode_simulate(e, mol)
             mol_prob[mol] = prob
-        self.normalize(mol_prob, players)
-        return mol_prob
+        normalizer = NormalizeTransformer()
+        return normalizer.transform_distribution(mol_prob)
 
     def load_episodes(self, season, episode):
         if episode is None:
@@ -47,14 +48,6 @@ class ExamDistribution(ProbabilityDistribution):
             if result.drop:
                 dropped.extend(result.players)
         return dropped
-
-    def normalize(self, mol_prob, players):
-        """ Scale the probabilities such that they sum up to 1.0 """
-        total = 0.0
-        for p in players:
-            total += mol_prob[p]
-        for p in players:
-            mol_prob[p] = round(mol_prob[p] / total, self.precision)
 
     def episode_simulate(self, episode, mol):
         """ Simulate the episode and determine the probability that the drop condition is satisfied """
