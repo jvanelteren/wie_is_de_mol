@@ -1,5 +1,6 @@
 class DataError(Exception):
-    pass
+    def __init__(self, message):
+        self.message = message
 
 # Interface used to compute probabilities that someone is the 'Mol'
 class ProbabilityDistribution:

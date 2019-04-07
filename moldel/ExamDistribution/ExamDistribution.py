@@ -1,28 +1,34 @@
 import math
 import random
+from ProbabilityDistribution import ProbabilityDistribution, DataError
 
-from ProbabilityDistribution import ProbabilityDistribution
-
-""" A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
- or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
 class ExamDistribution(ProbabilityDistribution):
-    """ Performs a simulation based on how the questions are filled in """
+    """ A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
+     or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
+
     def __init__(self, data, num_runs, precision):
+        """ Performs a simulation based on how the questions are filled in """
         self.data = data
         self.num_runs = num_runs
         self.precision = precision
 
     def compute_distribution(self, season, episode):
+        if season not in self.data:
+            raise DataError("Exam Distribution - Missing data season " + str(season))
         players = self.data[season][0]
         episodes = self.load_episodes(season, episode)
+        dropped = self.dropped_off(episodes) # Compute the list of players dropped of so far for efficiency
         mol_prob = dict()
         for mol in players:
-            prob = 1.0
-            for e in episodes:
-                prob *= self.episode_simulate(e, mol)
+            if mol in dropped:
+                prob = 0.0
+            else:
+                prob = 1.0
+                for e in episodes:
+                    prob *= self.episode_simulate(e, mol)
             mol_prob[mol] = prob
         self.normalize(mol_prob, players)
-        print(mol_prob)
+        return mol_prob
 
     def load_episodes(self, season, episode):
         if episode is None:
@@ -32,6 +38,15 @@ class ExamDistribution(ProbabilityDistribution):
             if i in self.data[season][1]:
                 episodes.append(self.data[season][1][i])
         return episodes
+
+    def dropped_off(self, episodes):
+        """ Compute the list of players that dropped off """
+        dropped = list()
+        for episode in episodes:
+            result = episode.result
+            if result.drop:
+                dropped.extend(result.players)
+        return dropped
 
     def normalize(self, mol_prob, players):
         """ Scale the probabilities such that they sum up to 1.0 """
@@ -51,27 +66,26 @@ class ExamDistribution(ProbabilityDistribution):
     def single_simulate_episode(self, episode, mol):
         """ Do a single simulation of the episode and return 1 if the drop condition is satisfied and 0 if not """
         player_score = self.simulate_player_score(episode, mol)
-        ordered_score = list(player_score.keys())
-        ordered_score.sort()
+        player_score.sort(key=lambda x: x[1])
         r = episode.result
         if r.drop: # In case player(s) have not survived the test then these player(s) should have the lowest score
             for i in range(len(r.players)):
-                drop = player_score[ordered_score[i]]
+                drop = player_score[i][0]
                 if drop not in r.players:
                     return 0
             return 1
         else:
-            # In case all players have survived, because some did not seen their screen. The the lowest score must
+            # In case all players have survived, because some did not seen their screen. Then the lowest score must
             # occur in the list of player that did not see their screen
-            drop = player_score[ordered_score[0]]
+            drop = player_score[0][0]
             return 1 if drop in r.players else 0
 
     def simulate_player_score(self, episode, mol):
-        """ Do a single simulation of the player scores for the test"""
-        player_score = dict()
+        """ Do a single simulation of the player scores for the test """
+        player_score = list()
         for p in episode.test_inputs:
             if p == mol: # The mol never has to leave the game, so his score is maximal
-                player_score[math.inf] = p
+                player_score.append((p, math.inf))
                 continue
             score = self.simulate_questions(episode, mol, p)
             score += episode.test_inputs[p].jokers
@@ -79,7 +93,7 @@ class ExamDistribution(ProbabilityDistribution):
             # Influence the score with a random value between 0.0 and 1.0 (so that the order of people with the same
             # score is random)
             score += random.random()
-            player_score[score] = p
+            player_score.append((p, score))
         return player_score
 
     def simulate_questions(self, episode, mol, player):

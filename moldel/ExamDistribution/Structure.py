@@ -31,7 +31,7 @@ class Episode:
             if i not in questions:
                 options = dict()
                 for j in range(1, len(players) + 1):
-                    options[j] = players[j - 1]
+                    options[j] = [players[j - 1]]
                 questions[i] = Question(options)
 
 class Result:

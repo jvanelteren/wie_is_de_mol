@@ -16,3 +16,25 @@ moldel/\.idea/moldel\.iml
 moldel/\.idea/modules\.xml
 
 moldel/\.idea/misc\.xml
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/vcs\.xml
+
+\.idea/wie_is_de_mol\.iml
+
+\.idea/workspace\.xml
+
+moldel/ExamDistribution/Data/__pycache__/Season18\.cpython-35\.pyc
+
+moldel/ExamDistribution/Data/__pycache__/Season17\.cpython-35\.pyc
+
+moldel/Printers/__pycache__/PiechartPrinter\.cpython-35\.pyc
+
+moldel/Printers/__pycache__/Printer\.cpython-35\.pyc
+
+moldel/Printers/__pycache__/TopsortedPrinter\.cpython-35\.pyc
+
+moldel/__pycache__/
