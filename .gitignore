@@ -28,3 +28,11 @@ moldel/\.idea/misc\.xml
 \.idea/workspace\.xml
 
 moldel/ExamDistribution/Data/__pycache__/Season18\.cpython-35\.pyc
+
+moldel/ExamDistribution/Data/__pycache__/Season17\.cpython-35\.pyc
+
+moldel/Printers/__pycache__/PiechartPrinter\.cpython-35\.pyc
+
+moldel/Printers/__pycache__/Printer\.cpython-35\.pyc
+
+moldel/Printers/__pycache__/TopsortedPrinter\.cpython-35\.pyc
