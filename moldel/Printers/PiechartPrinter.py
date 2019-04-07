@@ -9,7 +9,7 @@ class PiechartPrinter(Printer):
         sizes = list()
         for key, value in res.items():
             if value != 0.0:
-                labels.append(key)
+                labels.append(key.value)
                 sizes.append(value)
         plt.pie(sizes, labels=labels, autopct='%1.1f%%')
         plt.axis('equal')
