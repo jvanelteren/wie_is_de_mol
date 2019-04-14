@@ -1,6 +1,66 @@
 from enum import Enum
 
 class Candidates(Enum):
+    # Candidates of season 12
+    ANNE_MARIE_12 = "Anne-Marie"
+    DIO_12 = "Dio"
+    FRITS_12 = "Frits"
+    HADEWYCH_12 = "Hadewych"
+    LIESBETH_12 = "Liesbeth"
+    MAARTEN_12 = "Maarten"
+    MARIT_12 = "Marit"
+    MARION_12 = "Marion"
+    TIM_12 = "Tim"
+    WILLIAM_12 = "William"
+
+    # Candidates of season 13
+    CAROLIEN_13 = "Carolien"
+    DANIEL_13 = "Daniel"
+    EWOUT_13 = "Ewout"
+    JANINE_13 = "Janine"
+    JOEP_13 = "Joep"
+    KEES_13 = "Kees"
+    PAULIEN_13 = "Paulien"
+    TANIA_13 = "Tania"
+    TIM_13 = "Tim"
+    ZARAYDA_13 = "Zarayda"
+
+    # Candidates of season 14
+    AAF_14 = "Aaf"
+    DAPHNE_14 = "Daphne"
+    FREEK_14 = "Freek"
+    JAN_WILLEM_14 = "Jan-Willem"
+    JENNIFER_14 = "Jennifer"
+    MAURICE_14 = "Maurice"
+    OWEN_14 = "Owen"
+    SOFIE_14 = "Sofie"
+    SUSAN_14 = "Susan"
+    TYGO_14 = "Tygo"
+
+    # Candidates of season 15
+    AJOUAD_15 = "Ajouad"
+    CAROLINA_15 = "Carolina"
+    CHRIS_15 = "Chris"
+    EVELIEN_15 = "Evelien"
+    MARGRIET_15 = "Margriet"
+    MARLIJN_15 = "Marlijn"
+    MARTINE_15 = "Martine"
+    PIETER_15 = "Pieter"
+    RIK_15 = "Rik"
+    VIKTOR_15 = "Viktor"
+
+    # Candidates of season 16
+    AIREN_16 = "Airen"
+    ANNEMIEKE_16 = "Annemieke"
+    CECILE_16 = "Cecile"
+    ELLIE_16 = "Ellie"
+    KLAAS_16 = "Klaas"
+    MARJOLEIN_16 = "Marjolein"
+    REMY_16 = "Remy"
+    ROP_16 = "Rop"
+    TAEKE_16 = "Taeke"
+    TIM_16 = "Tim"
+
     # Candidates of season 17
     DIEDERIK_17 = "Diederik"
     IMANUELLE_17 = "Imanuelle"
@@ -17,7 +77,7 @@ class Candidates(Enum):
     BELLA_18 = "Bella"
     EMILIO_18 = "Emilio"
     JAN_18 = "Jan"
-    JEAN_18 = "Jean"
+    JEAN_MARC_18 = "Jean-Marc"
     LOES_18 = "Loes"
     OLCAY_18 = "Olcay"
     RON_18 = "Ron"
