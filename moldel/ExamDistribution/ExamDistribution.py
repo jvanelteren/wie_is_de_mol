@@ -9,11 +9,17 @@ class ExamDistribution(ProbabilityDistribution):
      or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
 
     def __init__(self, data, num_runs):
-        """ Performs a simulation based on how the questions are filled in """
+        """ Create an exam distribution class.
+        Arguments:
+            data (dict): All data about the test
+            num_runs (int): How often a Monte-Carlo simulation is executed (a higher number means a higher accuracy,
+            but also a higher running time)
+        """
         self.data = data
         self.num_runs = num_runs
 
     def compute_distribution(self, season, episode):
+        """ Performs a simulation based on how the questions are filled in """
         if season not in self.data:
             raise DataError("Exam Distribution - Missing data season " + str(season))
         players = self.data[season][0]
