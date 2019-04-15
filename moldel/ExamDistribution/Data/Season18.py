@@ -12,24 +12,24 @@ from ExamDistribution.Structure import Question, TestInput, Result, Episode
 # 1: Bella; 2: Emilio; 3: Jan; 4: Jean; 5: Loes; 6: Olcay; 7: Ron; 8: Ruben; 9: Simone; 10: Stine
 # Vrijstellingen: Ruben, Olcay, Simone, Stine, Emilio, Bella
 # Antwoorden: Jean (3, 1), Jan (17, 1), Loes (20, 10)
-players1 = [Candidates.BELLA_18, Candidates.EMILIO_18, Candidates.JAN_18, Candidates.JEAN_18, Candidates.LOES_18,
+players1 = [Candidates.BELLA_18, Candidates.EMILIO_18, Candidates.JAN_18, Candidates.JEAN_MARC_18, Candidates.LOES_18,
             Candidates.OLCAY_18, Candidates.RON_18, Candidates.RUBEN_18, Candidates.SIMONE_18, Candidates.STINE_18]
 question1_3 = Question({1: [Candidates.BELLA_18, Candidates.SIMONE_18],
                         2: [Candidates.STINE_18, Candidates.EMILIO_18],
                         3: [Candidates.RUBEN_18, Candidates.OLCAY_18],
                         4: [Candidates.LOES_18, Candidates.RON_18],
-                        5: [Candidates.JAN_18, Candidates.JEAN_18]})
-question1_17 = Question({1: [Candidates.JAN_18, Candidates.JEAN_18, Candidates.LOES_18, Candidates.RON_18],
+                        5: [Candidates.JAN_18, Candidates.JEAN_MARC_18]})
+question1_17 = Question({1: [Candidates.JAN_18, Candidates.JEAN_MARC_18, Candidates.LOES_18, Candidates.RON_18],
                          2: [Candidates.BELLA_18, Candidates.SIMONE_18, Candidates.STINE_18, Candidates.EMILIO_18,
                              Candidates.RUBEN_18, Candidates.OLCAY_18]})
 question1_20 = Question({1: [Candidates.BELLA_18], 2: [Candidates.EMILIO_18], 3: [Candidates.JAN_18],
-                         4: [Candidates.JEAN_18], 5: [Candidates.LOES_18], 6: [Candidates.OLCAY_18],
+                         4: [Candidates.JEAN_MARC_18], 5: [Candidates.LOES_18], 6: [Candidates.OLCAY_18],
                          7: [Candidates.RON_18], 8: [Candidates.RUBEN_18], 9: [Candidates.SIMONE_18],
                          10: [Candidates.STINE_18]})
 result1 = Result(True, [Candidates.RON_18])
 episode1 = Episode(players1, result1,
                    {Candidates.BELLA_18: TestInput(jokers = 20), Candidates.EMILIO_18: TestInput(jokers = 20),
-                    Candidates.JAN_18: TestInput({17: 1}), Candidates.JEAN_18: TestInput({3: 1}),
+                    Candidates.JAN_18: TestInput({17: 1}), Candidates.JEAN_MARC_18: TestInput({3: 1}),
                     Candidates.LOES_18: TestInput({20: 10}), Candidates.OLCAY_18: TestInput(jokers = 20),
                     Candidates.RUBEN_18: TestInput(jokers = 20), Candidates.SIMONE_18: TestInput(jokers = 20),
                     Candidates.STINE_18: TestInput(jokers = 20)},
@@ -37,9 +37,9 @@ episode1 = Episode(players1, result1,
 
 # Aflevering 2 (afvaller: Jean)
 # Vrijwillig afgevallen dus vragen worden niet meegerekend
-players2 = [Candidates.BELLA_18, Candidates.EMILIO_18, Candidates.JAN_18, Candidates.JEAN_18, Candidates.LOES_18,
+players2 = [Candidates.BELLA_18, Candidates.EMILIO_18, Candidates.JAN_18, Candidates.JEAN_MARC_18, Candidates.LOES_18,
             Candidates.OLCAY_18, Candidates.RUBEN_18, Candidates.SIMONE_18, Candidates.STINE_18]
-result2 = Result(True, [Candidates.JEAN_18])
+result2 = Result(True, [Candidates.JEAN_MARC_18])
 episode2 = Episode(players2, result2, dict(), dict())
 
 # Aflevering 3 (afvaller: Bella)
