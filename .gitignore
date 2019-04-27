@@ -42,3 +42,7 @@ moldel/__pycache__/
 moldel/DistributionTransformers/__pycache__/
 
 moldel/PersonDistribution/__pycache__/
+
+moldel/WikiWordDistribution/__pycache__/
+
+moldel/\.idea/inspectionProfiles/Project_Default\.xml
