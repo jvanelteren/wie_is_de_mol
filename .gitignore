@@ -46,3 +46,13 @@ moldel/PersonDistribution/__pycache__/
 moldel/WikiWordDistribution/__pycache__/
 
 moldel/\.idea/inspectionProfiles/Project_Default\.xml
+
+moldel/WikiWordDistribution/DataExtractors/__pycache__/
+
+moldel/WikiWordDistribution/DataFilters/__pycache__/
+
+moldel/WikiWordDistribution/DataParsers/__pycache__/
+
+moldel/WikiWordDistribution/DataPredictors/__pycache__/
+
+moldel/WikiWordDistribution/DataSelectors/__pycache__/
