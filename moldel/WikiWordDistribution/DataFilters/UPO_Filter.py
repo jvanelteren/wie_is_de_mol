@@ -7,7 +7,7 @@ class UPO_Filter:
     def __init__(self, season_multiplier):
         self.season_multiplier = season_multiplier
 
-    def filter(self, all_words, parsed_data):
+    def filter(self, all_words, parsed_data, season):
         seasons = WordManipulator.get_seasons(parsed_data)
         threshold = len(seasons) * self.season_multiplier
         important_words = set()

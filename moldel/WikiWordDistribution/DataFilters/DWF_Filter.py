@@ -12,5 +12,5 @@ class DWF_Filter(DataFilter):
             word = line.split(" ")[0]
             self.frequent_words.add(word)
 
-    def filter(self, all_words, parsed_data):
+    def filter(self, all_words, parsed_data, season):
         return all_words.difference(self.frequent_words)

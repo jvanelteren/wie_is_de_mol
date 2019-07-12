@@ -6,12 +6,15 @@ import math
 from WikiWordDistribution.DataPredictors.DataPredictor import DataPredictor
 
 class SpecialLinearRegression(DataPredictor):
-    def __init__(self, max_run_time, error_rate, bias, max_coefs, max_diff):
+    def __init__(self, max_run_time, error_rate, bias, max_coefs, max_diff, weights = None):
+        if weights == None:
+            weights = dict()
         self.max_run_time = max_run_time
         self.error_rate = error_rate
         self.bias = bias
         self.max_coefs = max_coefs
         self.max_diff = max_diff
+        self.weights = weights
 
     def train(self, train_input, train_output):
         mol_output = self.inv_sigmoid(1.0 - 9.0 * self.error_rate)
@@ -37,7 +40,7 @@ class SpecialLinearRegression(DataPredictor):
         # The objective function (which is the squares of the error values)
         obj = LinExpr()
         for c in train_input:
-            obj += error_vars[c] * error_vars[c]
+            obj += self.weights.get(c, 1.0) * error_vars[c] * error_vars[c]
         model.setObjective(obj, GRB.MINIMIZE)
 
         # Definition of error rate

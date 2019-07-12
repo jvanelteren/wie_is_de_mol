@@ -8,7 +8,7 @@ class UPS_Filter(DataFilter):
     def __init__(self, threshold):
         self.threshold = threshold
 
-    def filter(self, all_words, parsed_data):
+    def filter(self, all_words, parsed_data, season):
         important_words = all_words
         seasons = WordManipulator.get_seasons(parsed_data)
         for s in seasons:

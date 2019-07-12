@@ -20,8 +20,10 @@ class WikiWordDistribution(ProbabilityDistribution):
     def compute_distribution(self, season, episode):
         parsed_data = DataParser.parse()
         all_words = DataParser.get_all_words(parsed_data)
-        important_words = list(self.filter.filter(all_words, parsed_data))
+        important_words = list(self.filter.filter(all_words, parsed_data, season))
         important_words.sort()
+        print(important_words)
+        print(len(important_words))
         numberic_input = self.input_extractor.extract(important_words, parsed_data)
         numberic_output = Output_Extractor().extract(important_words, parsed_data)
         train_input = self.train_selector.select(numberic_input, parsed_data, season)
@@ -30,5 +32,4 @@ class WikiWordDistribution(ProbabilityDistribution):
         predict_input = Predict_Selector().select(numberic_input, parsed_data, season)
         predict_output = self.predicter.predict(predict_input)
         normalizer = NormalizeTransformer()
-        reverser = ReverseTransformer()
-        return reverser.transform_distribution(normalizer.transform_distribution(predict_output))
+        return normalizer.transform_distribution(predict_output)
