@@ -1,6 +1,56 @@
-from enum import Enum
+from aenum import Enum, NoAlias
 
 class Candidates(Enum):
+    _settings_ = NoAlias
+
+    # Candidates of season 8
+    ANNETTE_8 = "Annette"
+    COEN_8 = "Coen"
+    DENNIS_8 = "Dennis"
+    DUNYA_8 = "Dunya"
+    EDO_8 = "Edo"
+    GEORGINA_8 = "Georgina"
+    JORIS_8 = "Joris"
+    NICOLETTE_8 = "Nicolette"
+    PATRICK_8 = "Patrick"
+    REGINA_8 = "Regina"
+
+    # Candidates of season 9
+    ANNIEK_9 = "Anniek"
+    DENNIS_9 = "Dennis"
+    FROUKJE_9 = "Froukje"
+    HANS_9 = "Hans"
+    JON_9 = "Jon"
+    PAULA_9 = "Paula"
+    RICK_9 = "Rick"
+    SEBASTIAAN_9 = "Sebastiaan"
+    VERA_9 = "Vera"
+    VIVIENNE_9 = "Vivienne"
+
+    # Candidates of season 10
+    ARJEN_10 = "Arjen"
+    BARBARA_10 = "Barbara"
+    ERIK_10 = "Erik"
+    FRITS_10 = "Frits"
+    HIND_10 = "Hind"
+    KIM_10 = "Kim"
+    LORETTA_10 = "Loretta"
+    MANUEL_10 = "Manuel"
+    SANNE_10 = "Sanne"
+    TIM_10 = "Tim"
+
+    # Candidates of season 11
+    ANNA_11 = "Anna"
+    ART_11 = "Art"
+    HANNA_11 = "Hanna"
+    HORACE_11 = "Horace"
+    JAN_11 = "Jan"
+    KARIN_11 = "Karin"
+    MIRYANNA_11 = "Miryanna"
+    PATRICK_11 = "Patrick"
+    PEPIJN_11 = "Pepijn"
+    SOUNDOS_11 = "Soundos"
+
     # Candidates of season 12
     ANNE_MARIE_12 = "Anne-Marie"
     DIO_12 = "Dio"
