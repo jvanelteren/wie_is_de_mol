@@ -1,10 +1,18 @@
+import rootpath
 import string
+
 from WikiWordDistribution.DataParsers.Linker import linker
 
 class DataParser:
-    """ The Data Parser will read the Wiki Files and Linker for each candidate. And will parse
+    """ The Data Parser will read the Wiki Files and Linker for each candidate and convert it into a variable
+    "parsed_data". This variable is a dictionary with 3 keys:
+    -"occ": Which is a dictionary where the keys are the words occuring in the wiki page of the candidate and the
+    values are ints how often this word occurs in the candidate wiki page.
+    -"season": Which is an integer equal to the season in which the candidate participated.
+    -"mol": Which is a boolean variable. It is equal to true if this candidate is the Mol.
     the word occurences (occ), season number (season) and whether that person is the Mol or not (mol). """
-    WIKI_FILES_FOLDER = "WikiWordDistribution/WikiFiles/"
+
+    WIKI_FILES_FOLDER = "/moldel/WikiWordDistribution/WikiFiles/"
 
     @staticmethod
     def parse():
@@ -26,7 +34,7 @@ class DataParser:
     @staticmethod
     def wiki_file_parse(file_name):
         """ Will parse the word occurrences of a single wiki file """
-        file = open(DataParser.WIKI_FILES_FOLDER + file_name, "r", encoding="utf8")
+        file = open(rootpath.detect() + DataParser.WIKI_FILES_FOLDER + file_name, "r", encoding="utf8")
         lines = file.readlines()
         word_occurrence = dict()
         for line in lines:

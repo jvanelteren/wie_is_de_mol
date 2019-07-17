@@ -1,11 +1,10 @@
 class DataExtractor:
     """ The Data Extractor interface """
 
-    def extract(self, important_words, parsed_data):
+    def extract(self, parsed_data):
         """ Extract numberic vectors out of the candidate data.
         Arguments:
-            important_words (list): A sorted list of the most important words
-            parsed_data (dict): A dictionary that contains the data for each candidate
+            parsed_data (dict): More information can be found in DataParser
 
-        Returns: A dictionary with the numberic vectors for each candidate """
+        Returns: A dictionary with candidates as key and a list of floats (numberic vectors) as values. """
         pass

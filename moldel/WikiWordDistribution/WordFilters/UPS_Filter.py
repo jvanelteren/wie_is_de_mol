@@ -1,14 +1,14 @@
-from WikiWordDistribution.DataFilters.WordManipulator import WordManipulator
-from WikiWordDistribution.DataFilters.DataFilter import DataFilter
+from WikiWordDistribution.WordFilters.WordManipulator import WordManipulator
+from WikiWordDistribution.WordFilters.WordFilter import WordFilter
 
-class UPS_Filter(DataFilter):
+class UPS_Filter(WordFilter):
     """ The Upper Page Season Filter (UPS Filter) filters all words by taking only the words that appears at most in
     n wiki pages during every season. """
 
     def __init__(self, threshold):
         self.threshold = threshold
 
-    def filter(self, all_words, parsed_data, season):
+    def filter(self, all_words, parsed_data):
         important_words = all_words
         seasons = WordManipulator.get_seasons(parsed_data)
         for s in seasons:

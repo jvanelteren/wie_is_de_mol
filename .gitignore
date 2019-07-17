@@ -56,3 +56,5 @@ moldel/WikiWordDistribution/DataParsers/__pycache__/
 moldel/WikiWordDistribution/DataPredictors/__pycache__/
 
 moldel/WikiWordDistribution/DataSelectors/__pycache__/
+
+moldel/WikiWordDistribution/WordFilters/__pycache__/

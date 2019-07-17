@@ -4,11 +4,11 @@ class DataSelector:
     def select(self, numberic_data, parsed_data, season):
         """ Selects part of the data out of the numberic_data based on the season.
         Arguments:
-            numberic_data (dict): The numberic data for each candidate
-            parsed_data (dict): A dictionary that contains the data for each candidate
+            numberic_data (dict): More information can be found in DataExtractor (same data type as return value)
+            parsed_data (dict): More information can be found in DataParser
             season (int): The season number on which we will do a prediction about who the Mol is
 
-        Returns: A filtered numberic data where only the numberic data of some candidate remains """
+        Returns: A filtered numberic data where only the numberic data of some candidate remains. """
         selected_data = dict()
         for candidate in parsed_data:
             if self.include(parsed_data[candidate]["season"], season):

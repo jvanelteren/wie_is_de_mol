@@ -1,12 +1,19 @@
+from DistributionTransformers.CompositeTransformer import CompositeTransformer
 from DistributionTransformers.RoundTransformer import RoundTransformer
+from ExamDistribution.Data.Data import exam_data
+from ExamDistribution.ExamDistribution import ExamDistribution
 from Printers.PiechartPrinter import PiechartPrinter
-from WikiWordDistribution.DataExtractors.Binary_Extractor import Binary_Extractor
-from WikiWordDistribution.DataFilters.MainFilter import MainFilter
-from WikiWordDistribution.DataPredictors.StatisticsPredictor import StatisticsPredictor
+
+from WikiWordDistribution.DataExtractors.Job_Extractor import Job_Extractor
+from WikiWordDistribution.DataPredictors.Cossim_Predictor import Cossim_Predictor
 from WikiWordDistribution.WikiWordDistribution import WikiWordDistribution
 
-dis = WikiWordDistribution(Binary_Extractor(False), MainFilter(), StatisticsPredictor(), False)
-res = dis.compute_distribution(16, None)
+dis = WikiWordDistribution(Job_Extractor(), Cossim_Predictor(10, 2, 0.02), False)
+res = dis.compute_distribution(10, 2)
+# dis2 = ExamDistribution(exam_data, 10000)
+# res2 = dis2.compute_distribution(19, 2)
+# composite = CompositeTransformer()
+# res = composite.transform_distribution([res, res2])
 rounder = RoundTransformer()
 res = rounder.transform_distribution(res, precision = 3)
 printer = PiechartPrinter()

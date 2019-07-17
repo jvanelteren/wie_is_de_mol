@@ -18,3 +18,10 @@ class WordManipulator:
             if word in parsed_data[c]["occ"]:
                 count += 1
         return count
+
+    @staticmethod
+    def get_total_occurrence_word(word, parsed_data):
+        sum = 0
+        for candidate in parsed_data:
+            sum += parsed_data[candidate]["occ"].get(word, 0)
+        return sum
