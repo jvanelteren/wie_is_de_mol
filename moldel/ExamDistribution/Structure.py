@@ -1,38 +1,28 @@
 class Episode:
-    def __init__(self, players, result, test_inputs, questions, num_questions = 20):
+    def __init__(self, players, result, test_inputs, visible_questions, num_questions = 20):
         """ Constructor for Episode (only include episodes that give information about who dropped of)
         Args:
             players (list): The players (string format) that participate in the final test of the episode
             result (Result): The result of the test
             test_inputs (dict): What the players did on the test. The key is the player (string format) and the value
             is a TestInput object
-            questions (dict): The questions of the test that were visible for viewers (key is the question number which
-             is an int and  The values are Question objects)
+            visible_questions (dict): The questions of the test that were visible for viewers (key is the question
+            number which is an integer and the values are Question objects)
             num_questions (int): The total number of questions the test had
         """
         self.players = players
         self.result = result
         self.initialize_test(players, test_inputs)
         self.test_inputs = test_inputs
-        self.initialize_questions(questions, num_questions, players)
-        self.questions = questions
+        self.visible_questions = visible_questions
         self.num_questions = num_questions
+        self.num_invisible_questions = num_questions - len(visible_questions)
 
     def initialize_test(self, players, test_inputs):
         """ For players not contained in test_inputs do not give any information about questions and use 0 jokers """
         for p in players:
             if p not in test_inputs:
                 test_inputs[p] = TestInput()
-
-    def initialize_questions(self, questions, num_questions, players):
-        """ If the length of question dict is smaller than num_questions then the questions will be appended with
-        standard questions (for every player an answer) """
-        for i in range(1, num_questions + 1):
-            if i not in questions:
-                options = dict()
-                for j in range(1, len(players) + 1):
-                    options[j] = [players[j - 1]]
-                questions[i] = Question(options)
 
 class Result:
     def __init__(self, drop, players):

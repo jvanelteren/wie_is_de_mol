@@ -1,5 +1,6 @@
 import math
 import random
+import numpy
 
 from DistributionTransformers.NormalizeTransformer import NormalizeTransformer
 from ProbabilityDistribution import ProbabilityDistribution, DataError
@@ -58,7 +59,7 @@ class ExamDistribution(ProbabilityDistribution):
     def episode_simulate(self, episode, mol):
         """ Simulate the episode and determine the probability that the drop condition is satisfied """
         good_runs = 0
-        for i in range(self.num_runs):
+        for _ in range(self.num_runs):
             good_runs += self.single_simulate_episode(episode, mol)
         return good_runs / self.num_runs
 
@@ -98,11 +99,11 @@ class ExamDistribution(ProbabilityDistribution):
     def simulate_questions(self, episode, mol, player):
         """ Simulate the score on the questions for a player """
         score = 0
-        questions = episode.questions
+        questions = episode.visible_questions
         answered_questions = episode.test_inputs[player].answered_questions
         player_choices = episode.players[:] # The other players where the player can fill in a question on
         player_choices.remove(player)
-        for q in range(1, len(questions) + 1):
+        for q in questions:
             if q in answered_questions:
                 option = answered_questions[q]
             else:
@@ -111,4 +112,7 @@ class ExamDistribution(ProbabilityDistribution):
             covered = questions[q].options[option] # The players that are covered by the option of that question
             if mol in covered:
                 score += 1
+
+        # All invisible questions will be considered as questions where every candidate has a seperate answer.
+        score += numpy.random.binomial(episode.num_invisible_questions, 1 / len(player_choices))
         return score
