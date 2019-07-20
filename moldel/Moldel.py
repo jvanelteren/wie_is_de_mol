@@ -1,25 +1,31 @@
-import time
+from itertools import compress
 
 from DistributionTransformers.CompositeTransformer import CompositeTransformer
 from DistributionTransformers.RoundTransformer import RoundTransformer
-from ExamDistribution.Data.Data import exam_data
 from ExamDistribution.ExamDistribution import ExamDistribution
 from Printers.PiechartPrinter import PiechartPrinter
-
 from WikiWordDistribution.DataExtractors.Job_Extractor import Job_Extractor
 from WikiWordDistribution.DataPredictors.Cossim_Predictor import Cossim_Predictor
 from WikiWordDistribution.WikiWordDistribution import WikiWordDistribution
 
-# dis = WikiWordDistribution(Job_Extractor(), Cossim_Predictor(10, 2, 0.02), False)
-# res = dis.compute_distribution(10, 2)
-dis2 = ExamDistribution(exam_data, 10000)
-start = time.time()
-res2 = dis2.compute_distribution(19, 8)
-end = time.time()
-print(end - start)
-# composite = CompositeTransformer()
-# res = composite.transform_distribution([res, res2])
+LAYERS = [ExamDistribution(10000),
+          WikiWordDistribution(Job_Extractor(), Cossim_Predictor(10, 2, 0.02), False)]
+PRINTER = PiechartPrinter()
+
+# All frequently changed constants
+EXAM_ACTIVATED = True
+WIKIWORD_ACTIVATED = True
+SEASON = 19
+EPISODE = 8 # If episode is set to None then all known information is used
+
+# Start of the code
+include = [EXAM_ACTIVATED, WIKIWORD_ACTIVATED]
+included_layers = list(compress(LAYERS, include))
+results = []
+for l in included_layers:
+    results.append(l.compute_distribution(SEASON, EPISODE))
+composite = CompositeTransformer()
+results = composite.transform_distribution(results)
 rounder = RoundTransformer()
-res = rounder.transform_distribution(res2, precision = 3)
-printer = PiechartPrinter()
-printer.do_print(res)
+results = rounder.transform_distribution(results, precision = 3)
+PRINTER.do_print(results)
