@@ -1,30 +1,32 @@
-from scipy.stats import bernoulli
 import math
 import random
 import numpy
 
 from DistributionTransformers.NormalizeTransformer import NormalizeTransformer
+from ExamDistribution.Data.Season17 import season17
+from ExamDistribution.Data.Season18 import season18
+from ExamDistribution.Data.Season19 import season19
 from ProbabilityDistribution import ProbabilityDistribution, DataError
 
 class ExamDistribution(ProbabilityDistribution):
     """ A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
      or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
 
-    def __init__(self, data, num_runs):
+    EXAM_DATA = {17: season17, 18: season18, 19: season19}
+
+    def __init__(self, num_runs):
         """ Create an exam distribution class.
         Arguments:
-            data (dict): All data about the test
             num_runs (int): How often a Monte-Carlo simulation is executed (a higher number means a higher accuracy,
             but also a higher running time)
         """
-        self.data = data
         self.num_runs = num_runs
 
     def compute_distribution(self, season, episode):
         """ Performs a simulation based on how the questions are filled in """
-        if season not in self.data:
+        if season not in self.EXAM_DATA:
             raise DataError("Exam Distribution - Missing data season " + str(season))
-        players = self.data[season][0]
+        players = self.EXAM_DATA[season][0]
         episodes = self.load_episodes(season, episode)
         dropped = self.dropped_off(episodes) # Compute the list of players dropped of so far for efficiency
         mol_prob = dict()
@@ -41,11 +43,11 @@ class ExamDistribution(ProbabilityDistribution):
 
     def load_episodes(self, season, episode):
         if episode is None:
-            episode = max(self.data[season][1].keys())
+            episode = max(self.EXAM_DATA[season][1].keys())
         episodes = list()
         for i in range(1, episode + 1):
-            if i in self.data[season][1]:
-                episodes.append(self.data[season][1][i])
+            if i in self.EXAM_DATA[season][1]:
+                episodes.append(self.EXAM_DATA[season][1][i])
         return episodes
 
     def dropped_off(self, episodes):
@@ -60,10 +62,11 @@ class ExamDistribution(ProbabilityDistribution):
     def episode_simulate(self, episode, mol):
         """ Simulate the episode and determine the probability that the drop condition is satisfied """
         precomp = self.episode_precomputation(episode, mol)
+        immunity = self.get_immunity(episode, mol)
 
         good_runs = 0
         for _ in range(self.num_runs):
-            good_runs += self.single_simulate_episode(episode, mol, precomp)
+            good_runs += self.single_simulate_episode(episode, immunity, precomp)
         return good_runs / self.num_runs
 
     def episode_precomputation(self, episode, mol):
@@ -98,9 +101,18 @@ class ExamDistribution(ProbabilityDistribution):
             precomp[p] = (score, answer_probs)
         return precomp
 
-    def single_simulate_episode(self, episode, mol, precomp):
+    def get_immunity(self, episode, mol):
+        """ Get the set of all players that have immunity during the exam of an episode (either the Mol or someone
+        with a "Vrijstelling"). """
+        immunity = {mol}
+        for p, ti in episode.test_inputs.items():
+            if ti.immunity:
+                immunity.add(p)
+        return immunity
+
+    def single_simulate_episode(self, episode, immunity, precomp):
         """ Do a single simulation of the episode and return 1 if the drop condition is satisfied and 0 if not. """
-        player_score = self.simulate_player_score(episode, mol, precomp)
+        player_score = self.simulate_player_score(episode, immunity, precomp)
         player_score.sort(key=lambda x: x[1])
         r = episode.result
         if r.drop: # In case player(s) have not survived the test then these player(s) should have the lowest score
@@ -115,11 +127,12 @@ class ExamDistribution(ProbabilityDistribution):
             drop = player_score[0][0]
             return 1 if drop in r.players else 0
 
-    def simulate_player_score(self, episode, mol, precomp):
+    def simulate_player_score(self, episode, immunity, precomp):
         """ Do a single simulation of the player scores for the test """
         player_score = list()
         for p in episode.test_inputs:
-            if p == mol: # The mol never has to leave the game, so his score is maximal
+            # The mol and candidates with a "Vrijstelling" never has to leave the game, so his score is maximal
+            if p in immunity:
                 player_score.append((p, math.inf))
                 continue
             score = precomp[p][0] # The score start with the jokers + already correctly answered questions

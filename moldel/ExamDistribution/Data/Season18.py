@@ -28,11 +28,11 @@ question1_20 = Question({1: [Candidates.BELLA_18], 2: [Candidates.EMILIO_18], 3:
                          10: [Candidates.STINE_18]})
 result1 = Result(True, [Candidates.RON_18])
 episode1 = Episode(players1, result1,
-                   {Candidates.BELLA_18: TestInput(jokers = 20), Candidates.EMILIO_18: TestInput(jokers = 20),
+                   {Candidates.BELLA_18: TestInput(immunity = True), Candidates.EMILIO_18: TestInput(immunity = True),
                     Candidates.JAN_18: TestInput({17: 1}), Candidates.JEAN_MARC_18: TestInput({3: 1}),
-                    Candidates.LOES_18: TestInput({20: 10}), Candidates.OLCAY_18: TestInput(jokers = 20),
-                    Candidates.RUBEN_18: TestInput(jokers = 20), Candidates.SIMONE_18: TestInput(jokers = 20),
-                    Candidates.STINE_18: TestInput(jokers = 20)},
+                    Candidates.LOES_18: TestInput({20: 10}), Candidates.OLCAY_18: TestInput(immunity = True),
+                    Candidates.RUBEN_18: TestInput(immunity = True), Candidates.SIMONE_18: TestInput(immunity = True),
+                    Candidates.STINE_18: TestInput(immunity = True)},
                    {3: question1_3, 17: question1_17, 20: question1_20})
 
 # Aflevering 2 (afvaller: Jean)
@@ -74,9 +74,9 @@ question3_20 = Question({1: [Candidates.BELLA_18], 2: [Candidates.EMILIO_18], 3:
                          7: [Candidates.SIMONE_18], 8: [Candidates.STINE_18]})
 result3 = Result(True, [Candidates.BELLA_18])
 episode3 = Episode(players3, result3,
-                   {Candidates.RUBEN_18: TestInput({3: 1}), Candidates.SIMONE_18: TestInput({15: 5}, 1),
-                    Candidates.EMILIO_18: TestInput({4: 5}, 1), Candidates.LOES_18: TestInput({14: 1}),
-                    Candidates.OLCAY_18: TestInput({20: 6}), Candidates.STINE_18: TestInput(jokers=1)},
+                   {Candidates.RUBEN_18: TestInput({3: 1}), Candidates.SIMONE_18: TestInput({15: 5}, jokers = 1),
+                    Candidates.EMILIO_18: TestInput({4: 5}, jokers = 1), Candidates.LOES_18: TestInput({14: 1}),
+                    Candidates.OLCAY_18: TestInput({20: 6}), Candidates.STINE_18: TestInput(jokers = 1)},
                    {3: question3_3, 4: question3_4, 14: question3_14, 15: question3_15, 20: question3_20})
 
 # Aflevering 4 (afvaller: Emilio)
@@ -107,7 +107,7 @@ question4_20 = Question({1: [Candidates.EMILIO_18], 2: [Candidates.JAN_18], 3: [
 result4 = Result(True, [Candidates.EMILIO_18])
 episode4 = Episode(players4, result4,
                    {Candidates.OLCAY_18: TestInput({1: 1}), Candidates.RUBEN_18: TestInput({20: 6}),
-                    Candidates.SIMONE_18: TestInput({18: 6}), Candidates.JAN_18: TestInput(jokers = 20),
+                    Candidates.SIMONE_18: TestInput({18: 6}), Candidates.JAN_18: TestInput(immunity = True),
                     Candidates.STINE_18: TestInput({20: 1}), Candidates.EMILIO_18: TestInput({16: 1}),
                     Candidates.LOES_18: TestInput({20: 1})},
                    {1: question4_1, 16: question4_16, 18: question4_18, 20: question4_20})

@@ -57,10 +57,12 @@ class TestInput:
         answered_questions (dict): A dictionary where the key is the question number (int) and the value is the option
         number (int) that the player selected. If a question number is not contained in the dictionary then it is
         unknown what the player filled in at this question
-        jokers (int): How much jokers the player used on the test (set equal to num_questions if player had immunity)
+        immunity (bool): Is equal to true if the player has used a "vrijstelling" otherwise is equal to false.
+        jokers (int): How much jokers the player used on the test.
     """
-    def __init__(self, answered_questions = None, jokers = 0):
+    def __init__(self, answered_questions = None, immunity = False, jokers = 0):
         if answered_questions is None:
             answered_questions = dict()
         self.answered_questions = answered_questions
+        self.immunity = immunity
         self.jokers = jokers
