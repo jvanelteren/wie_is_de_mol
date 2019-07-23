@@ -12,11 +12,13 @@ LAYERS = [ExamDistribution(10000),
           WikiWordDistribution(Job_Extractor(), Cossim_Predictor(10, 2, 0.02), False)]
 PRINTER = PiechartPrinter()
 
-# All frequently changed constants
+# All frequently changed constants. The episode value is inclusive, meaning that also the result of the test of that
+# episode is also included as data. If you set episode to 0 as value then no episodes are used as data at all. If you
+# set episode to None then all known information about that season is used.
 EXAM_ACTIVATED = True
 WIKIWORD_ACTIVATED = True
-SEASON = 19
-EPISODE = 8 # If episode is set to None then all known information is used
+SEASON = 16
+EPISODE = None
 
 # Start of the code
 include = [EXAM_ACTIVATED, WIKIWORD_ACTIVATED]
