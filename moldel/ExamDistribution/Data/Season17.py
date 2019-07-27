@@ -28,9 +28,9 @@ question1_20 = Question({1: [Candidates.DIEDERIK_17], 2: [Candidates.IMANUELLE_1
                          10: [Candidates.YVONNE_17]})
 result1 = Result(True, [Candidates.VINCENT_17])
 episode1 = Episode(players1, result1,
-                   {Candidates.YVONNE_17: TestInput({20: 9}), Candidates.THOMAS_17: TestInput(jokers = 20),
-                    Candidates.SANNE_17: TestInput({1: 2}), Candidates.JEROEN_17: TestInput(jokers = 20),
-                    Candidates.ROOS_17: TestInput(jokers = 20), Candidates.JOCHEM_17: TestInput({4: 2})},
+                   {Candidates.YVONNE_17: TestInput({20: 9}), Candidates.THOMAS_17: TestInput(immunity = True),
+                    Candidates.SANNE_17: TestInput({1: 2}), Candidates.JEROEN_17: TestInput(immunity = True),
+                    Candidates.ROOS_17: TestInput(immunity = True), Candidates.JOCHEM_17: TestInput({4: 2})},
                    {1: question1_1, 4: question1_4, 20: question1_20})
 
 # Aflevering 2 (afvaller: Yvonne)
@@ -74,7 +74,7 @@ episode2 = Episode(players2, result2,
                    {Candidates.THOMAS_17: TestInput({14: 1}), Candidates.YVONNE_17: TestInput({20: 5}),
                     Candidates.ROOS_17: TestInput({9: 2}), Candidates.SANNE_17: TestInput({1: 2}),
                     Candidates.SIGRID_17: TestInput({15: 1}), Candidates.JEROEN_17: TestInput({12: 2}),
-                    Candidates.DIEDERIK_17: TestInput(jokers = 20)},
+                    Candidates.DIEDERIK_17: TestInput(immunity = True)},
                    {1: question2_1, 9: question2_9, 12: question2_12, 14: question2_14, 15: question2_15,
                     20: question2_20})
 
@@ -142,7 +142,7 @@ result4 = Result(True, [Candidates.SIGRID_17])
 episode4 = Episode(players4, result4,
                    {Candidates.JOCHEM_17: TestInput(jokers = 1), Candidates.IMANUELLE_17: TestInput({4: 2}),
                     Candidates.DIEDERIK_17: TestInput(jokers = 1), Candidates.THOMAS_17: TestInput({1: 1}),
-                    Candidates.SANNE_17: TestInput({18: 3}, 1), Candidates.SIGRID_17: TestInput({6: 3})},
+                    Candidates.SANNE_17: TestInput({18: 3}, jokers = 1), Candidates.SIGRID_17: TestInput({6: 3})},
                    {1: question4_1, 4: question4_4, 6: question4_6, 18: question4_18})
 
 # Aflevering 5 (afvaller: Jeroen)
@@ -180,7 +180,7 @@ question5_20 = Question({1: [Candidates.DIEDERIK_17], 2: [Candidates.IMANUELLE_1
 result5 = Result(True, [Candidates.JEROEN_17])
 episode5 = Episode(players5, result5,
                    {Candidates.JEROEN_17: TestInput({3: 1}), Candidates.JOCHEM_17: TestInput({2: 3}),
-                    Candidates.THOMAS_17: TestInput({11: 5}, 1), Candidates.SANNE_17: TestInput({1: 1}),
+                    Candidates.THOMAS_17: TestInput({11: 5}, jokers = 1), Candidates.SANNE_17: TestInput({1: 1}),
                     Candidates.IMANUELLE_17: TestInput({20: 1}), Candidates.DIEDERIK_17: TestInput({17: 5})},
                    {1: question5_1, 2: question5_2, 3: question5_3, 11: question5_11, 17: question5_17,
                     20: question5_20})
@@ -233,7 +233,7 @@ question7_20 = Question({1: [Candidates.DIEDERIK_17], 2: [Candidates.IMANUELLE_1
 result7 = Result(True, [Candidates.IMANUELLE_17])
 episode7 = Episode(players7, result7,
                    {Candidates.IMANUELLE_17: TestInput({17: 2}), Candidates.DIEDERIK_17: TestInput({10: 2}),
-                    Candidates.JOCHEM_17: TestInput({20: 1}, 1), Candidates.SANNE_17: TestInput({5: 5})},
+                    Candidates.JOCHEM_17: TestInput({20: 1}, jokers = 1), Candidates.SANNE_17: TestInput({5: 5})},
                    {5: question7_5, 10: question7_10, 17: question7_17, 20: question7_20})
 
 # Aflevering 8 (afvaller: Diederik)

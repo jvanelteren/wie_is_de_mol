@@ -129,8 +129,9 @@ result3 = Result(True, [Candidates.NIKKIE_19])
 episode3 = Episode(players3, result3,
                    {Candidates.RICK_PAUL_19: TestInput({4: 4}), Candidates.NIELS_19: TestInput({16: 1}),
                     Candidates.NIKKIE_19: TestInput({12: 1}), Candidates.ROBERT_19: TestInput(jokers = 1),
-                    Candidates.MEREL_19: TestInput(jokers = 20), Candidates.JAMIE_19: TestInput({7: 1}),
-                    Candidates.SARAH_19: TestInput({19: 2}, 1), Candidates.EVELIEN_19: TestInput({20: 9}, 2)},
+                    Candidates.MEREL_19: TestInput(immunity = True), Candidates.JAMIE_19: TestInput({7: 1}),
+                    Candidates.SARAH_19: TestInput({19: 2}, jokers = 1),
+                    Candidates.EVELIEN_19: TestInput({20: 9}, jokers = 2)},
                    {4: question3_4, 7: question3_7, 12: question3_12, 16: question3_16, 19: question3_19,
                     20: question3_20})
 
@@ -223,9 +224,10 @@ question7_20 = Question({1: [Candidates.JAMIE_19], 2: [Candidates.MEREL_19], 3: 
                          4: [Candidates.RICK_PAUL_19], 5: [Candidates.SARAH_19], 6: [Candidates.SINAN_19]})
 result7 = Result(True, [Candidates.JAMIE_19, Candidates.RICK_PAUL_19])
 episode7 = Episode(players7, result7,
-                   {Candidates.MEREL_19: TestInput({11: 2}), Candidates.RICK_PAUL_19: TestInput({20: 1}, 1),
+                   {Candidates.MEREL_19: TestInput({11: 2}), Candidates.RICK_PAUL_19: TestInput({20: 1}, jokers = 1),
                     Candidates.SINAN_19: TestInput({12: 2}), Candidates.SARAH_19: TestInput({6: 2}),
-                    Candidates.NIELS_19: TestInput({18: 5}, 2), Candidates.JAMIE_19: TestInput({20: 4}, 2)},
+                    Candidates.NIELS_19: TestInput({18: 5}, jokers = 2),
+                    Candidates.JAMIE_19: TestInput({20: 4}, jokers = 2)},
                     {6: question7_6, 11: question7_11, 12: question7_12, 18: question7_18, 20: question7_20})
 
 # Aflevering 8 (afvaller: Sinan)
@@ -247,7 +249,7 @@ question8_5 = Question({1: [Candidates.NIELS_19], 2: [Candidates.MEREL_19], 3: [
 result8 = Result(True, [Candidates.SINAN_19])
 episode8 = Episode(players8, result8,
                    {Candidates.MEREL_19: TestInput({4: 1}), Candidates.SINAN_19: TestInput({5: 2}),
-                    Candidates.SARAH_19: TestInput({3: 1}), Candidates.NIELS_19: TestInput(jokers = 20)},
+                    Candidates.SARAH_19: TestInput({3: 1}), Candidates.NIELS_19: TestInput(immunity = True)},
                     {3: question8_3, 4: question8_4, 5: question8_5})
 
 season19 = (players1, {1: episode1, 2: episode2, 3: episode3, 4: episode4, 5: episode5, 7: episode7, 8: episode8})
