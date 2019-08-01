@@ -3,6 +3,7 @@ import random
 import numpy
 
 from DistributionTransformers.NormalizeTransformer import NormalizeTransformer
+from ExamDistribution.Data.Season15 import season15
 from ExamDistribution.Data.Season16 import season16
 from ExamDistribution.Data.Season17 import season17
 from ExamDistribution.Data.Season18 import season18
@@ -13,7 +14,7 @@ class ExamDistribution(ProbabilityDistribution):
     """ A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
      or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
 
-    EXAM_DATA = {16: season16, 17: season17, 18: season18, 19: season19}
+    EXAM_DATA = {15: season15, 16: season16, 17: season17, 18: season18, 19: season19}
 
     def __init__(self, num_runs):
         """ Create an exam distribution class.
