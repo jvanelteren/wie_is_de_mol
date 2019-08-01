@@ -1,7 +1,7 @@
 from DistributionTransformers.DistributionTransformer import DistributionTransformer
 
 class ReverseTransformer(DistributionTransformer):
-
+    """ The Reverse Transformer will make low likelihoods high and high likelihoods low """
     def transform_distribution(self, distribution, **kwargs):
         total_weight = 0.0
         new_distribution = dict()

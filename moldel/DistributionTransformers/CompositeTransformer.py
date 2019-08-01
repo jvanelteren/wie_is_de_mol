@@ -3,7 +3,7 @@ from DistributionTransformers.NormalizeTransformer import NormalizeTransformer
 
 
 class CompositeTransformer(DistributionTransformer):
-    """ The composite transformer will combine multiple probability distributions """
+    """ The composite transformer will combine multiple likelihood distributions """
 
     def transform_distribution(self, distribution, **kwargs):
         res = distribution[0].copy()

@@ -1,7 +1,7 @@
 from DistributionTransformers.DistributionTransformer import DistributionTransformer
 
 class NormalizeTransformer(DistributionTransformer):
-    """ The normalize transformer will normalize the probability distribution such that it sums up to 1.0 """
+    """ The normalize transformer will normalize the likelihood distribution such that it sums up to 1.0 """
 
     def transform_distribution(self, distribution, **kwargs):
         total = 0.0

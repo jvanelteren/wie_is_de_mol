@@ -1,8 +1,8 @@
 from Printers.Printer import Printer
 
 class TopsortedPrinter(Printer):
-    """ The Topsorted Printer is the most basic printer that print the probabilities of the candidates that they are
-        the Mol. This is sorted from the highest probability to the least probability """
+    """ The Topsorted Printer is the most basic printer that print the likelihoods of the candidates that they are
+        the Mol. This is sorted from the highest likelihood to the least likelihood """
 
     def do_print(self, res):
         sort_res = list()

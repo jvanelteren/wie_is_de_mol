@@ -1,7 +1,7 @@
 from DistributionTransformers.DistributionTransformer import DistributionTransformer
 
 class RoundTransformer(DistributionTransformer):
-    """ The round transformer will round all probabilities with a certain precision """
+    """ The round transformer will round all likelihood with a certain precision """
 
     def transform_distribution(self, distribution, **kwargs):
         precision = kwargs['precision']

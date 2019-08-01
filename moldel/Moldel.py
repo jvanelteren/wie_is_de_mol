@@ -2,14 +2,14 @@ from itertools import compress
 
 from DistributionTransformers.CompositeTransformer import CompositeTransformer
 from DistributionTransformers.RoundTransformer import RoundTransformer
-from ExamDistribution.ExamDistribution import ExamDistribution
+from ExamLayer.ExamLayer import ExamLayer
 from Printers.PiechartPrinter import PiechartPrinter
-from WikiWordDistribution.DataExtractors.Job_Extractor import Job_Extractor
-from WikiWordDistribution.DataPredictors.Cossim_Predictor import Cossim_Predictor
-from WikiWordDistribution.WikiWordDistribution import WikiWordDistribution
+from WikiWordLayer.DataExtractors.Job_Extractor import Job_Extractor
+from WikiWordLayer.DataPredictors.Cossim_Predictor import Cossim_Predictor
+from WikiWordLayer.WikiWordLayer import WikiWordLayer
 
-LAYERS = [ExamDistribution(10000),
-          WikiWordDistribution(Job_Extractor(), Cossim_Predictor(10, 2, 0.02), False)]
+LAYERS = [ExamLayer(10000),
+          WikiWordLayer(Job_Extractor(), Cossim_Predictor(10, 2, 0.02), False)]
 PRINTER = PiechartPrinter()
 
 # All frequently changed constants. The episode value is inclusive, meaning that also the result of the test of that
@@ -17,8 +17,8 @@ PRINTER = PiechartPrinter()
 # set episode to None then all known information about that season is used.
 EXAM_ACTIVATED = True
 WIKIWORD_ACTIVATED = True
-SEASON = 16
-EPISODE = None
+SEASON = 17
+EPISODE = 0
 
 # Start of the code
 include = [EXAM_ACTIVATED, WIKIWORD_ACTIVATED]
