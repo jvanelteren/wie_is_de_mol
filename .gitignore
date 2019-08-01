@@ -60,3 +60,7 @@ moldel/WikiWordDistribution/DataSelectors/__pycache__/
 moldel/WikiWordDistribution/WordFilters/__pycache__/
 
 moldel/ExamDistribution/Data/__pycache__/
+
+moldel/ExamLayer/__pycache__/
+
+moldel/WikiWordLayer/DataPredictors/__pycache__/
