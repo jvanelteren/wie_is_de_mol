@@ -9,7 +9,7 @@ class ScaleTransformer(DistributionTransformer):
     a likelihood distribution where the highest likelihood is 1.0 and the others are 0.0 """
 
     def transform_distribution(self, distribution, **kwargs):
-        exp = kwargs['exp']
+        exp = kwargs["exp"]
         new_distribution = dict()
         for key in distribution:
             new_distribution[key] = pow(distribution[key], exp)

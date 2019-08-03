@@ -17,7 +17,7 @@ class ExamLayer(Layer):
     EXAM_DATA = {15: season15, 16: season16, 17: season17, 18: season18, 19: season19}
 
     def __init__(self, num_runs):
-        """ Create an exam distribution class.
+        """ Create an Exam Layer class.
         Arguments:
             num_runs (int): How often a Monte-Carlo simulation is executed (a higher number means a higher accuracy,
             but also a higher running time)
@@ -27,7 +27,7 @@ class ExamLayer(Layer):
     def compute_distribution(self, season, episode):
         """ Performs a simulation based on how the questions are filled in """
         if season not in self.EXAM_DATA:
-            raise DataError("Exam Distribution - Missing data season " + str(season))
+            raise DataError("Exam Layer - Missing data season " + str(season))
         players = self.EXAM_DATA[season][0]
         episodes = self.load_episodes(season, episode)
         dropped = self.dropped_off(episodes) # Compute the list of players dropped of so far for efficiency
