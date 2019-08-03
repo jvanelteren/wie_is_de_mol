@@ -7,10 +7,10 @@ from WikiWordLayer.DataSelectors.Predict_Selector import Predict_Selector
 from WikiWordLayer.DataSelectors.Strict_Train_Selector import Strict_Train_Selector
 
 class WikiWordLayer(Layer):
-    """ The Wiki Word Distribution predicts which candidate is the Mol based on their wikipedia pages. """
+    """ The Wiki Word Layer predicts which candidate is the Mol based on their wikipedia pages. """
 
     def __init__(self, input_extractor, predicter, strict):
-        """ Create a Wiki Word Distribution.
+        """ Create a Wiki Word Layer.
         Arguments:
             input_extractor: The Data Extractor class used to convert the candidates to numberic vectors
             predicter: The Data Predictor class used to determine how likely numberic vectors are the Mol based
