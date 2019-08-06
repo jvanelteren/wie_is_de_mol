@@ -2,6 +2,7 @@ from itertools import compress
 
 from DistributionTransformers.CompositeTransformer import CompositeTransformer
 from DistributionTransformers.LowerRemovalTransformer import LowerRemovalTransformer
+from DistributionTransformers.ManualExclusions import ManualExclusions
 from DistributionTransformers.RoundTransformer import RoundTransformer
 from EarlyActivityLayer.EarlyActivityLayer import EarlyActivityLayer
 from ExamLayer.ExamLayer import ExamLayer
@@ -21,8 +22,8 @@ PRINTER = PiechartPrinter()
 EXAM_ACTIVATED = True
 WIKIWORD_ACTIVATED = True
 EARLYACTIVITY_ACTIVATED = True
-SEASON = 18
-EPISODE = 0
+SEASON = 19
+EPISODE = None
 
 # Start of the code
 include = [EXAM_ACTIVATED, WIKIWORD_ACTIVATED, EARLYACTIVITY_ACTIVATED]
@@ -32,6 +33,8 @@ for l in included_layers:
     results.append(l.compute_distribution(SEASON, EPISODE))
 composite = CompositeTransformer()
 results = composite.transform_distribution(results)
+excluder = ManualExclusions()
+results = excluder.transform_distribution(results, season = SEASON, episode = EPISODE)
 rounder = RoundTransformer()
 results = rounder.transform_distribution(results, precision = 3)
 remover = LowerRemovalTransformer()

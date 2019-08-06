@@ -3,6 +3,7 @@ import random
 import numpy
 
 from DistributionTransformers.NormalizeTransformer import NormalizeTransformer
+from ExamLayer.Data.Season14 import season14
 from ExamLayer.Data.Season15 import season15
 from ExamLayer.Data.Season16 import season16
 from ExamLayer.Data.Season17 import season17
@@ -14,7 +15,7 @@ class ExamLayer(Layer):
     """ A Probability Distribution that is based on what the candidates answer on the 'Test' and how much 'Jokers' they use
      or whether they use a 'Vrijstelling'. Then a prediction about the 'Mol' is made based on which candidate dropped off. """
 
-    EXAM_DATA = {15: season15, 16: season16, 17: season17, 18: season18, 19: season19}
+    EXAM_DATA = {14: season14, 15: season15, 16: season16, 17: season17, 18: season18, 19: season19}
 
     def __init__(self, num_runs):
         """ Create an Exam Layer class.
@@ -47,9 +48,9 @@ class ExamLayer(Layer):
         if episode is None:
             episode = max(self.EXAM_DATA[season][1].keys())
         episodes = list()
-        for i in range(1, episode + 1):
-            if i in self.EXAM_DATA[season][1]:
-                episodes.append(self.EXAM_DATA[season][1][i])
+        for e, data in self.EXAM_DATA[season][1].items():
+            if e <= episode:
+                episodes.append(data)
         return episodes
 
     def dropped_off(self, episodes):
