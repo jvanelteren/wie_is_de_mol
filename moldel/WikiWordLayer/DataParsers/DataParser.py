@@ -1,7 +1,8 @@
 import rootpath
 import string
 
-from WikiWordLayer.DataParsers.Linker import linker
+from Candidates import *
+from WikiWordLayer.DataParsers.Linker import LINKER
 
 class DataParser:
     """ The Data Parser will read the Wiki Files and Linker for each candidate and convert it into a variable
@@ -18,8 +19,9 @@ class DataParser:
     def parse():
         """ Will parse all data for all candidates """
         parsed_data = dict()
-        for row in linker:
-            parsed_data[row[0]] = {"occ": DataParser.wiki_file_parse(row[2]), "season": row[1], "mol": row[3]}
+        for candidate, occ in LINKER.items():
+            parsed_data[candidate] = {"occ": DataParser.wiki_file_parse(occ), "season": candidate.value.season,
+                                      "mol": candidate.value.is_mol}
         return parsed_data
 
     @staticmethod

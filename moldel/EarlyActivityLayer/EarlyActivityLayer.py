@@ -13,5 +13,5 @@ class EarlyActivityLayer(ManualLayer):
             for candidate, suspicion in season_data.items():
                 inner_parse[candidate] = suspicion.value
             parsed_data[season] = inner_parse
-        super().__init__(parsed_data)
+        super().__init__("Early Activity Layer", parsed_data)
 

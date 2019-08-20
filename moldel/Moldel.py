@@ -6,6 +6,7 @@ from DistributionTransformers.ManualExclusions import ManualExclusions
 from DistributionTransformers.RoundTransformer import RoundTransformer
 from EarlyActivityLayer.EarlyActivityLayer import EarlyActivityLayer
 from ExamLayer.ExamLayer import ExamLayer
+from FaceVisibilityLayers.FaceVisibilityLayer import FaceVisibilityLayer
 from Printers.PiechartPrinter import PiechartPrinter
 from WikiWordLayer.DataExtractors.Job_Extractor import Job_Extractor
 from WikiWordLayer.DataPredictors.Cossim_Predictor import Cossim_Predictor
@@ -13,7 +14,8 @@ from WikiWordLayer.WikiWordLayer import WikiWordLayer
 
 LAYERS = [ExamLayer(10000),
           WikiWordLayer(Job_Extractor(), Cossim_Predictor(10, 2, 0.02), False),
-          EarlyActivityLayer()]
+          EarlyActivityLayer(),
+          FaceVisibilityLayer(False, {1: 2.0, 2: 20.0, 3: 50.0, 4: 100.0})]
 PRINTER = PiechartPrinter()
 
 # All frequently changed constants. The episode value is inclusive, meaning that also the result of the test of that
@@ -22,11 +24,12 @@ PRINTER = PiechartPrinter()
 EXAM_ACTIVATED = True
 WIKIWORD_ACTIVATED = True
 EARLYACTIVITY_ACTIVATED = True
-SEASON = 19
-EPISODE = None
+FACEVISIBILITY_ACTIVATED = True
+SEASON = 18
+EPISODE = 1
 
 # Start of the code
-include = [EXAM_ACTIVATED, WIKIWORD_ACTIVATED, EARLYACTIVITY_ACTIVATED]
+include = [EXAM_ACTIVATED, WIKIWORD_ACTIVATED, EARLYACTIVITY_ACTIVATED, FACEVISIBILITY_ACTIVATED]
 included_layers = list(compress(LAYERS, include))
 results = []
 for l in included_layers:
