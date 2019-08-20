@@ -1,148 +1,127 @@
+from collections import namedtuple
 from aenum import Enum, NoAlias
 
+CandidateData = namedtuple("CandidateData", ["name", "season", "is_mol"])
 class Candidates(Enum):
     _settings_ = NoAlias
 
-    # Candidates of season 8
-    ANNETTE_8 = "Annette"
-    COEN_8 = "Coen"
-    DENNIS_8 = "Dennis"
-    DUNYA_8 = "Dunya"
-    EDO_8 = "Edo"
-    GEORGINA_8 = "Georgina"
-    JORIS_8 = "Joris"
-    NICOLETTE_8 = "Nicolette"
-    PATRICK_8 = "Patrick"
-    REGINA_8 = "Regina"
-
-    # Candidates of season 9
-    ANNIEK_9 = "Anniek"
-    DENNIS_9 = "Dennis"
-    FROUKJE_9 = "Froukje"
-    HANS_9 = "Hans"
-    JON_9 = "Jon"
-    PAULA_9 = "Paula"
-    RICK_9 = "Rick"
-    SEBASTIAAN_9 = "Sebastiaan"
-    VERA_9 = "Vera"
-    VIVIENNE_9 = "Vivienne"
-
-    # Candidates of season 10
-    ARJEN_10 = "Arjen"
-    BARBARA_10 = "Barbara"
-    ERIK_10 = "Erik"
-    FRITS_10 = "Frits"
-    HIND_10 = "Hind"
-    KIM_10 = "Kim"
-    LORETTA_10 = "Loretta"
-    MANUEL_10 = "Manuel"
-    SANNE_10 = "Sanne"
-    TIM_10 = "Tim"
-
-    # Candidates of season 11
-    ANNA_11 = "Anna"
-    ART_11 = "Art"
-    HANNA_11 = "Hanna"
-    HORACE_11 = "Horace"
-    JAN_11 = "Jan"
-    KARIN_11 = "Karin"
-    MIRYANNA_11 = "Miryanna"
-    PATRICK_11 = "Patrick"
-    PEPIJN_11 = "Pepijn"
-    SOUNDOS_11 = "Soundos"
-
-    # Candidates of season 12
-    ANNE_MARIE_12 = "Anne-Marie"
-    DIO_12 = "Dio"
-    FRITS_12 = "Frits"
-    HADEWYCH_12 = "Hadewych"
-    LIESBETH_12 = "Liesbeth"
-    MAARTEN_12 = "Maarten"
-    MARIT_12 = "Marit"
-    MARION_12 = "Marion"
-    TIM_12 = "Tim"
-    WILLIAM_12 = "William"
-
-    # Candidates of season 13
-    CAROLIEN_13 = "Carolien"
-    DANIEL_13 = "Daniel"
-    EWOUT_13 = "Ewout"
-    JANINE_13 = "Janine"
-    JOEP_13 = "Joep"
-    KEES_13 = "Kees"
-    PAULIEN_13 = "Paulien"
-    TANIA_13 = "Tania"
-    TIM_13 = "Tim"
-    ZARAYDA_13 = "Zarayda"
-
-    # Candidates of season 14
-    AAF_14 = "Aaf"
-    DAPHNE_14 = "Daphne"
-    FREEK_14 = "Freek"
-    JAN_WILLEM_14 = "Jan-Willem"
-    JENNIFER_14 = "Jennifer"
-    MAURICE_14 = "Maurice"
-    OWEN_14 = "Owen"
-    SOFIE_14 = "Sofie"
-    SUSAN_14 = "Susan"
-    TYGO_14 = "Tygo"
-
-    # Candidates of season 15
-    AJOUAD_15 = "Ajouad"
-    CAROLINA_15 = "Carolina"
-    CHRIS_15 = "Chris"
-    EVELIEN_15 = "Evelien"
-    MARGRIET_15 = "Margriet"
-    MARLIJN_15 = "Marlijn"
-    MARTINE_15 = "Martine"
-    PIETER_15 = "Pieter"
-    RIK_15 = "Rik"
-    VIKTOR_15 = "Viktor"
-
-    # Candidates of season 16
-    AIREN_16 = "Airen"
-    ANNEMIEKE_16 = "Annemieke"
-    CECILE_16 = "Cecile"
-    ELLIE_16 = "Ellie"
-    KLAAS_16 = "Klaas"
-    MARJOLEIN_16 = "Marjolein"
-    REMY_16 = "Remy"
-    ROP_16 = "Rop"
-    TAEKE_16 = "Taeke"
-    TIM_16 = "Tim"
-
-    # Candidates of season 17
-    DIEDERIK_17 = "Diederik"
-    IMANUELLE_17 = "Imanuelle"
-    JEROEN_17 = "Jeroen"
-    JOCHEM_17 = "Jochem"
-    ROOS_17 = "Roos"
-    SANNE_17 = "Sanne"
-    SIGRID_17 = "Sigrid"
-    THOMAS_17 = "Thomas"
-    VINCENT_17 = "Vincent"
-    YVONNE_17 = "Yvonne"
-
-    # Candidates of season 18
-    BELLA_18 = "Bella"
-    EMILIO_18 = "Emilio"
-    JAN_18 = "Jan"
-    JEAN_MARC_18 = "Jean-Marc"
-    LOES_18 = "Loes"
-    OLCAY_18 = "Olcay"
-    RON_18 = "Ron"
-    RUBEN_18 = "Ruben"
-    SIMONE_18 = "Simone"
-    STINE_18 = "Stine"
-
-    # Candidates of season 19
-    EVI_19 = "Evi"
-    EVELIEN_19 = "Evelien"
-    JAMIE_19 = "Jamie"
-    MEREL_19 = "Merel"
-    NIELS_19 = "Niels"
-    NIKKIE_19 = "Nikkie"
-    RICK_PAUL_19 = "Rick-Paul"
-    ROBERT_19 = "Robert"
-    SARAH_19 = "Sarah"
-    SINAN_19 = "Sinan"
+    ANNETTE_8 = CandidateData("Annette", 8, False)
+    COEN_8 = CandidateData("Coen", 8, False)
+    DENNIS_8 = CandidateData("Dennis", 8, True)
+    DUNYA_8 = CandidateData("Dunya", 8, False)
+    EDO_8 = CandidateData("Edo", 8, False)
+    GEORGINA_8 = CandidateData("Georgina", 8, False)
+    JORIS_8 = CandidateData("Joris", 8, False)
+    NICOLETTE_8 = CandidateData("Nicolette", 8, False)
+    PATRICK_8 = CandidateData("Patrick", 8, False)
+    REGINA_8 = CandidateData("Regina", 8, False)
+    ANNIEK_9 = CandidateData("Anniek", 9, False)
+    DENNIS_9 = CandidateData("Dennis", 9, False)
+    FROUKJE_9 = CandidateData("Froukje", 9, False)
+    HANS_9 = CandidateData("Hans", 9, False)
+    JON_9 = CandidateData("Jon", 9, True)
+    PAULA_9 = CandidateData("Paula", 9, False)
+    RICK_9 = CandidateData("Rick", 9, False)
+    SEBASTIAAN_9 = CandidateData("Sebastiaan", 9, False)
+    VERA_9 = CandidateData("Vera", 9, False)
+    VIVIENNE_9 = CandidateData("Vivienne", 9, False)
+    ARJEN_10 = CandidateData("Arjen", 10, False)
+    BARBARA_10 = CandidateData("Barbara", 10, False)
+    ERIK_10 = CandidateData("Erik", 10, False)
+    FRITS_10 = CandidateData("Frits", 10, False)
+    HIND_10 = CandidateData("Hind", 10, False)
+    KIM_10 = CandidateData("Kim", 10, True)
+    LORETTA_10 = CandidateData("Loretta", 10, False)
+    MANUEL_10 = CandidateData("Manuel", 10, False)
+    SANNE_10 = CandidateData("Sanne", 10, False)
+    TIM_10 = CandidateData("Tim", 10, False)
+    ANNA_11 = CandidateData("Anna", 11, False)
+    ART_11 = CandidateData("Art", 11, False)
+    HANNA_11 = CandidateData("Hanna", 11, False)
+    HORACE_11 = CandidateData("Horace", 11, False)
+    JAN_11 = CandidateData("Jan", 11, False)
+    KARIN_11 = CandidateData("Karin", 11, False)
+    MIRYANNA_11 = CandidateData("Miryanna", 11, False)
+    PATRICK_11 = CandidateData("Patrick", 11, True)
+    PEPIJN_11 = CandidateData("Pepijn", 11, False)
+    SOUNDOS_11 = CandidateData("Soundos", 11, False)
+    ANNE_MARIE_12 = CandidateData("Anne-Marie", 12, True)
+    DIO_12 = CandidateData("Dio", 12, False)
+    FRITS_12 = CandidateData("Frits", 12, False)
+    HADEWYCH_12 = CandidateData("Hadewych", 12, False)
+    LIESBETH_12 = CandidateData("Liesbeth", 12, False)
+    MAARTEN_12 = CandidateData("Maarten", 12, False)
+    MARIT_12 = CandidateData("Marit", 12, False)
+    MARION_12 = CandidateData("Marion", 12, False)
+    TIM_12 = CandidateData("Tim", 12, False)
+    WILLIAM_12 = CandidateData("William", 12, False)
+    CAROLIEN_13 = CandidateData("Carolien", 13, False)
+    DANIEL_13 = CandidateData("Daniel", 13, False)
+    EWOUT_13 = CandidateData("Ewout", 13, False)
+    JANINE_13 = CandidateData("Janine", 13, False)
+    JOEP_13 = CandidateData("Joep", 13, False)
+    KEES_13 = CandidateData("Kees", 13, True)
+    PAULIEN_13 = CandidateData("Paulien", 13, False)
+    TANIA_13 = CandidateData("Tania", 13, False)
+    TIM_13 = CandidateData("Tim", 13, False)
+    ZARAYDA_13 = CandidateData("Zarayda", 13, False)
+    AAF_14 = CandidateData("Aaf", 14, False)
+    DAPHNE_14 = CandidateData("Daphne", 14, False)
+    FREEK_14 = CandidateData("Freek", 14, False)
+    JAN_WILLEM_14 = CandidateData("Jan-Willem", 14, False)
+    JENNIFER_14 = CandidateData("Jennifer", 14, False)
+    MAURICE_14 = CandidateData("Maurice", 14, False)
+    OWEN_14 = CandidateData("Owen", 14, False)
+    SOFIE_14 = CandidateData("Sofie", 14, False)
+    SUSAN_14 = CandidateData("Susan", 14, True)
+    TYGO_14 = CandidateData("Tygo", 14, False)
+    AJOUAD_15 = CandidateData("Ajouad", 15, False)
+    CAROLINA_15 = CandidateData("Carolina", 15, False)
+    CHRIS_15 = CandidateData("Chris", 15, False)
+    EVELIEN_15 = CandidateData("Evelien", 15, False)
+    MARGRIET_15 = CandidateData("Margriet", 15, True)
+    MARLIJN_15 = CandidateData("Marlijn", 15, False)
+    MARTINE_15 = CandidateData("Martine", 15, False)
+    PIETER_15 = CandidateData("Pieter", 15, False)
+    RIK_15 = CandidateData("Rik", 15, False)
+    VIKTOR_15 = CandidateData("Viktor", 15, False)
+    AIREN_16 = CandidateData("Airen", 16, False)
+    ANNEMIEKE_16 = CandidateData("Annemieke", 16, False)
+    CECILE_16 = CandidateData("Cecile", 16, False)
+    ELLIE_16 = CandidateData("Ellie", 16, False)
+    KLAAS_16 = CandidateData("Klaas", 16, True)
+    MARJOLEIN_16 = CandidateData("Marjolein", 16, False)
+    REMY_16 = CandidateData("Remy", 16, False)
+    ROP_16 = CandidateData("Rop", 16, False)
+    TAEKE_16 = CandidateData("Taeke", 16, False)
+    TIM_16 = CandidateData("Tim", 16, False)
+    DIEDERIK_17 = CandidateData("Diederik", 17, False)
+    IMANUELLE_17 = CandidateData("Imanuelle", 17, False)
+    JEROEN_17 = CandidateData("Jeroen", 17, False)
+    JOCHEM_17 = CandidateData("Jochem", 17, False)
+    ROOS_17 = CandidateData("Roos", 17, False)
+    SANNE_17 = CandidateData("Sanne", 17, False)
+    SIGRID_17 = CandidateData("Sigrid", 17, False)
+    THOMAS_17 = CandidateData("Thomas", 17, True)
+    VINCENT_17 = CandidateData("Vincent", 17, False)
+    YVONNE_17 = CandidateData("Yvonne", 17, False)
+    BELLA_18 = CandidateData("Bella", 18, False)
+    EMILIO_18 = CandidateData("Emilio", 18, False)
+    JAN_18 = CandidateData("Jan", 18, True)
+    JEAN_MARC_18 = CandidateData("Jean-Marc", 18, False)
+    LOES_18 = CandidateData("Loes", 18, False)
+    OLCAY_18 = CandidateData("Olcay", 18, False)
+    RON_18 = CandidateData("Ron", 18, False)
+    RUBEN_18 = CandidateData("Ruben", 18, False)
+    SIMONE_18 = CandidateData("Simone", 18, False)
+    STINE_18 = CandidateData("Stine", 18, False)
+    EVI_19 = CandidateData("Evi", 19, False)
+    EVELIEN_19 = CandidateData("Evelien", 19, False)
+    JAMIE_19 = CandidateData("Jamie", 19, False)
+    MEREL_19 = CandidateData("Merel", 19, True)
+    NIELS_19 = CandidateData("Niels", 19, False)
+    NIKKIE_19 = CandidateData("Nikkie", 19, False)
+    RICK_PAUL_19 = CandidateData("Rick-Paul", 19, False)
+    ROBERT_19 = CandidateData("Robert", 19, False)
+    SARAH_19 = CandidateData("Sarah", 19, False)
+    SINAN_19 = CandidateData("Sinan", 19, False)

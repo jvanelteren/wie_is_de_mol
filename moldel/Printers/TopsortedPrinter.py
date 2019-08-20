@@ -7,7 +7,7 @@ class TopsortedPrinter(Printer):
     def do_print(self, res):
         sort_res = list()
         for key, value in res.items():
-            sort_res.append((key.value, value))
+            sort_res.append((key.value.name, value))
         sort_res.sort(key=lambda x: x[1], reverse=True)
         for row in sort_res:
             name = row[0]
