@@ -1,5 +1,3 @@
-<meta name="google-site-verification" content="6bo9ocH7-03n2yvYKGEUXYO7lzdZomdxmNmzWgcCqgA" />
-
 # Introductie
 'Wie is de Mol?' is een programma op Nederland 1 dat elk jaar wordt uitgezonden. In dit programma moet kandidaten opdrachten doen waarmee je geld voor de pot kunt verdienen. Echter heb je ook een saboteur, die ook wel de 'Mol' wordt genoemd. De 'Mol' probeert te verhinderen dat er geld verdient wordt. De kandidaten moeten deze 'Mol' proberen te ontmaskeren. Bijna elke aflevering is er een test met vragen over de 'Mol' en de kandidaat die dan het minst weet over de 'Mol' valt af. Uiteindelijk blijven er op het einde 3 kandidaten over en degene die het meest weet over de 'Mol' is de winnaar van het spel en krijgt het bedrag dat in de pot zit. 
 
