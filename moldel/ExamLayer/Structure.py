@@ -1,4 +1,7 @@
-class Episode:
+from types import SimpleNamespace
+
+
+class Episode(SimpleNamespace):
     def __init__(self, players, result, test_inputs, visible_questions, num_questions = 20):
         """ Constructor for Episode (only include episodes that give information about who dropped off)
         Args:
@@ -10,13 +13,9 @@ class Episode:
             number which is an integer and the values are Question objects)
             num_questions (int): The total number of questions the test had
         """
-        self.players = players
-        self.result = result
         self.initialize_test(players, test_inputs)
-        self.test_inputs = test_inputs
-        self.visible_questions = visible_questions
-        self.num_questions = num_questions
-        self.num_invisible_questions = num_questions - len(visible_questions)
+        super().__init__(players = players, result = result, test_inputs = test_inputs, visible_questions = visible_questions,
+                         num_questions = num_questions, num_invisible_questions = num_questions - len(visible_questions))
 
     def initialize_test(self, players, test_inputs):
         """ For players not contained in test_inputs do not give any information about questions and use 0 jokers """
@@ -24,7 +23,7 @@ class Episode:
             if p not in test_inputs:
                 test_inputs[p] = TestInput()
 
-class Result:
+class Result(SimpleNamespace):
     def __init__(self, drop, players):
         """ Constructor for Result (a Result is what happend after the test)
         Args:
@@ -32,10 +31,9 @@ class Result:
             players (list): In case drop is true then this is the list of players (string format) that did not survive
             the test, in case drop is false then this is the list of players that possible would have failed the test
         """
-        self.drop = drop
-        self.players = players
+        super().__init__(drop = drop, players = players)
 
-class Question:
+class Question(SimpleNamespace):
     """ Constructor of Question
     Args:
         options (dict): The different options a player can choose at the question (the key is the option number (int):
@@ -43,7 +41,7 @@ class Question:
         an option targets)
     """
     def __init__(self, options):
-        self.options = options
+        super().__init__(options = options)
 
     def option_for_player(self, player):
         """ Get the option in the question that belongs to the player given as argument """
@@ -51,7 +49,7 @@ class Question:
             if player in self.options[key]:
                 return key
 
-class TestInput:
+class TestInput(SimpleNamespace):
     """ Constructor of Test Input (what a player did and filled in on the test)
     Args:
         answered_questions (dict): A dictionary where the key is the question number (int) and the value is the option
@@ -63,6 +61,4 @@ class TestInput:
     def __init__(self, answered_questions = None, immunity = False, jokers = 0):
         if answered_questions is None:
             answered_questions = dict()
-        self.answered_questions = answered_questions
-        self.immunity = immunity
-        self.jokers = jokers
+        super().__init__(answered_questions = answered_questions, immunity = immunity, jokers = jokers)
