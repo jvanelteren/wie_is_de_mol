@@ -5,12 +5,14 @@ from Candidates import *
 # The identifier name is printed at the beginning and the end of the script. The identifier is not necessary to run the
 # FaceTracker, but is useful if you run multiple instances of the FaceTracker. With the identifier name you can match
 # the results with the right episode and season.
-IDENTIFIER_NAME = "Season 12 - Episode 4"
+IDENTIFIER_NAME = "Season 17 - Episode 4"
 
 # The location to the video file of the episode on which you want to run the FaceTracker. Only mp4 and mkv files have
 # been tested with the FaceTracker, other video formats might not work. Make sure that only the episode is included in
 # video. MolTalk and commercial breaks should not be contained in the video.
-EPISODE_VIDEO_LOCATION = "/home/multifacio/WIDM/Seizoen 12/Videos/Episode 4.mp4"
+EPISODE_VIDEO_LOCATION = "/home/multifacio/WIDM/Seizoen 17/Videos/Episode 4.mp4"
+
+FACE_IMAGE_FOLDER = "/home/multifacio/WIDM/Seizoen 17/Candidates/"
 
 # The locations of the pictures for each candidate. Make sure that the quality of this pictures is good enough. This
 # means that for each candidate the chin, eyes, mouth and nose are clearly visible. Also the edges of the face should
@@ -26,19 +28,19 @@ EPISODE_VIDEO_LOCATION = "/home/multifacio/WIDM/Seizoen 12/Videos/Episode 4.mp4"
 # episode or has been detected at least 100 times during episode 2, 3 or 4. If this is not the case then you should
 # pick a higher quality picture of the candidate. If this new picture still does not give higher detection values then
 # you should pick the best picture and stick to the low detection values of the candidate.
-FACE_IMAGE_LOCATIONS = {Candidates.ANNE_MARIE_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Anne-Marie.jpeg",
-                        Candidates.DIO_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Dio.jpeg",
-                        Candidates.FRITS_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Frits.jpeg",
-                        Candidates.HADEWYCH_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Hadewych.jpeg",
-                        Candidates.LIESBETH_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Liesbeth.jpeg",
-                        Candidates.MAARTEN_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Maarten.jpeg",
-                        Candidates.MARION_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Marion.jpeg",
-                        Candidates.MARIT_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Marit.jpeg",
-                        Candidates.TIM_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/Tim.jpeg",
-                        Candidates.WILLIAM_12: "/home/multifacio/WIDM/Seizoen 12/Candidates/William.jpeg"}
+FACE_IMAGE_NAMES = {Candidates.DIEDERIK_17: ["Diederik.jpeg", "Diederik2.jpeg"],
+                    Candidates.IMANUELLE_17: ["Imanuelle.jpeg", "Imanuelle2.jpeg"],
+                    Candidates.JEROEN_17: ["Jeroen.jpeg", "Jeroen2.jpeg"],
+                    Candidates.JOCHEM_17: ["Jochem.jpeg", "Jochem2.jpeg"],
+                    Candidates.ROOS_17: ["Roos.jpeg", "Roos2.jpeg"],
+                    Candidates.SANNE_17: ["Sanne.jpeg", "Sanne2.jpeg"],
+                    Candidates.SIGRID_17: ["Sigrid.jpeg", "Sigrid2.jpeg"],
+                    Candidates.THOMAS_17: ["Thomas.jpeg", "Thomas2.jpeg"],
+                    Candidates.VINCENT_17: ["Vincent.jpeg", "Vincent2.jpeg"],
+                    Candidates.YVONNE_17: ["Yvonne.jpeg", "Yvonne2.jpeg"]}
 
 # How many frames get skipped before analysing a frame (setting this value higher will make the script run faster,
 # but makes the results less accurate). The general rule is to use 1 frame every 0.5 seconds. Therefore for video files
 # with 25 frames per second it is recommended to use a FRAME_SKIP of 10 (which means a frame get analysed every 0.4
 # second). For video files with 30 frames per second it is recommeded to use a FRAME_SKIP of 15.
-FRAME_SKIP = 10
+FRAME_SKIP = 15
