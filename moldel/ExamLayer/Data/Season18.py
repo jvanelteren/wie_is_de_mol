@@ -35,12 +35,36 @@ episode1 = Episode(players1, result1,
                     Candidates.STINE_18: TestInput(immunity = True)},
                    {3: question1_3, 17: question1_17, 20: question1_20})
 
-# Aflevering 2 (afvaller: Jean)
-# Vrijwillig afgevallen dus vragen worden niet meegerekend
+# Aflevering 2 (afvaller: Jean, vrijwillig afgevallen, geen informatie maar wel data ingevoerd voor regressie)
+# Vragen:
+# 1 - De Mol is een:
+# 1: Emilio, Jan, Jean-Marc, Ruben; 2: Bella, Loes, Olcay, Simone, Stine;
+# 3 - Had de Mol een voertuig met rupsbanden tijdens de opdracht met graafmachines:
+# 1: Ruben; 2: Jean-Marc, Stine, Simone, Jan, Olcay, Loes, Emilio, Bella;
+# 6 - Wisselde het team waar de Mol in zat het biljet van 1000 euro bij de opdracht op de markt:
+# 1: Jan, Stine, Olcay; 2: Bella, Emilio, Jean-Marc, Loes, Ruben, Simone;
+# 12 - Wat was het nummer van de loge waarin de Mol zich bevond, bij aanvang van de theateropdracht (Niet bruikbaar)
+# Antwoorden: Olcay (3, 1), Jan (1, 1), Ruben (6, 1)
 players2 = [Candidates.BELLA_18, Candidates.EMILIO_18, Candidates.JAN_18, Candidates.JEAN_MARC_18, Candidates.LOES_18,
             Candidates.OLCAY_18, Candidates.RUBEN_18, Candidates.SIMONE_18, Candidates.STINE_18]
+question2_1 = Question({1: [Candidates.EMILIO_18, Candidates.JAN_18, Candidates.JEAN_MARC_18, Candidates.RUBEN_18],
+                        2: [Candidates.BELLA_18, Candidates.LOES_18, Candidates.OLCAY_18, Candidates.SIMONE_18,
+                            Candidates.STINE_18]})
+question2_3 = Question({1: [Candidates.RUBEN_18],
+                        2: [Candidates.JEAN_MARC_18, Candidates.STINE_18, Candidates.SIMONE_18, Candidates.JAN_18,
+                            Candidates.OLCAY_18, Candidates.LOES_18, Candidates.EMILIO_18, Candidates.BELLA_18]})
+question2_6 = Question({1: [Candidates.JAN_18, Candidates.STINE_18, Candidates.OLCAY_18],
+                        2: [Candidates.BELLA_18, Candidates.EMILIO_18, Candidates.JEAN_MARC_18, Candidates.LOES_18,
+                            Candidates.RUBEN_18, Candidates.SIMONE_18]})
 result2 = Result(True, [Candidates.JEAN_MARC_18])
-episode2 = Episode(players2, result2, dict(), dict())
+episode2 = Episode(players2, result2,
+                   {Candidates.OLCAY_18: TestInput({3: 1}, immunity = True),
+                    Candidates.JAN_18: TestInput({1: 1}, immunity = True),
+                    Candidates.RUBEN_18: TestInput({6: 1}, immunity = True),
+                    Candidates.BELLA_18: TestInput(immunity = True), Candidates.EMILIO_18: TestInput(immunity = True),
+                    Candidates.LOES_18: TestInput(immunity = True), Candidates.SIMONE_18: TestInput(immunity = True),
+                    Candidates.STINE_18: TestInput(immunity = True)},
+                   {1: question2_1, 3: question2_3, 6: question2_6})
 
 # Aflevering 3 (afvaller: Bella)
 # Vragen:

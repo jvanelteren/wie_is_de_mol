@@ -36,7 +36,7 @@ result1f = Result(True, [Candidates.DAPHNE_14])
 episode1f = Episode(players1, result1f,
                    {Candidates.SOFIE_14: TestInput({1: 1}), Candidates.JAN_WILLEM_14: TestInput({5: 1, 10: 6}),
                     Candidates.FREEK_14: TestInput({8: 3}), Candidates.SUSAN_14: TestInput({10: 10})},
-                   {1: question1f_1, 5: question1f_5, 8: question1f_8, 10: question1f_10}, 10)
+                   {1: question1f_1, 5: question1f_5, 8: question1f_8, 10: question1f_10}, 10, skip_regression = True)
 
 # Aflevering 1 - Second (afvaller: Maurice) (vervolg op vorige test)
 # Vragen:

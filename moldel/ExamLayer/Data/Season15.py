@@ -229,12 +229,34 @@ episode6 = Episode(players6, result6,
                     Candidates.MARGRIET_15: TestInput({20: 2}), Candidates.MARTINE_15: TestInput({16: 2})},
                    {5: question6_5, 7: question6_7, 16: question6_16, 20: question6_20})
 
-# Aflevering 7 (geen schermen en geen afvallers dus ook geen data ingevuld)
+# Aflevering 7 (geen schermen en geen afvallers maar wel data ingevuld voor regressie)
+# Vragen:
+# 1 - De Mol is:
+# 1: Chris, Rik; 2: Margriet, Marlijn, Martine;
+# 13 - Wanneer speechte de Mol in de tempel:
+# 1: Martine; 2: Marlijn; 3: Rik; 4: Margriet; 5: Chris;
+# 15 - Werd de Mol door de inwoners van Pundaluoya als Mol verkozen:
+# 1: Chris; 2: Margriet, Marlijn, Martine, Rik;
+# 20 - Wie is de Mol:
+# 1: Chris; 2: Margriet; 3: Marlijn; 4: Martine; 5: Rik;
+# Antwoorden: Marlijn (13, 2) (1 joker), Martine (15, 1), Chris (1, 2), Margriet (20, 5), Rik (1 joker)
 players7 = [Candidates.CHRIS_15, Candidates.MARGRIET_15, Candidates.MARLIJN_15, Candidates.MARTINE_15,
             Candidates.RIK_15]
+question7_1 = Question({1: [Candidates.CHRIS_15, Candidates.RIK_15],
+                        2: [Candidates.MARGRIET_15, Candidates.MARLIJN_15, Candidates.MARTINE_15]})
+question7_13 = Question({1: [Candidates.MARTINE_15], 2: [Candidates.MARLIJN_15], 3: [Candidates.RIK_15],
+                         4: [Candidates.MARGRIET_15], 5: [Candidates.CHRIS_15]})
+question7_15 = Question({1: [Candidates.CHRIS_15],
+                         2: [Candidates.MARGRIET_15, Candidates.MARLIJN_15, Candidates.MARTINE_15, Candidates.RIK_15]})
+question7_20 = Question({1: [Candidates.CHRIS_15], 2: [Candidates.MARGRIET_15], 3: [Candidates.MARLIJN_15],
+                         4: [Candidates.MARTINE_15], 5: [Candidates.RIK_15]})
 result7 = Result(False, [Candidates.CHRIS_15, Candidates.MARGRIET_15, Candidates.MARLIJN_15, Candidates.MARTINE_15,
                          Candidates.RIK_15])
-episode7 = Episode(players7, result7, dict(), dict())
+episode7 = Episode(players7, result7,
+                   {Candidates.MARLIJN_15: TestInput({13: 2}, jokers = 1), Candidates.MARTINE_15: TestInput({15: 1}),
+                    Candidates.CHRIS_15: TestInput({1: 2}), Candidates.MARGRIET_15: TestInput({20: 5}),
+                    Candidates.RIK_15: TestInput(jokers = 1)},
+                   {1: question7_1, 13: question7_13, 15: question7_15, 20: question7_20})
 
 # Aflevering 8 (afvaller: Martine)
 # Vragen:

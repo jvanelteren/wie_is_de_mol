@@ -195,6 +195,46 @@ episode5 = Episode(players5, result5,
                     Candidates.SINAN_19: TestInput({12: 3}), Candidates.JAMIE_19: TestInput({20: 4})},
                     {6: question5_6, 12: question5_12, 17: question5_17, 20: question5_20})
 
+# Aflevering 6 (geen afvaller en geen informatie, maar wel data ingevoerd voor de regressie)
+# Vragen:
+# 6 - Werkte de Mol aan de rode draad opdracht tijdens 'Steentje bijdragen':
+# 1: Niels, Jamie, Sarah; 2: Merel, Sinan, Rick-Paul;
+# 7 - Bestuurde de Mol de wals tijdens de opdracht 'Steentje Bijdragen':
+# 1: Sinan; 2: Jamie, Merel, Rick-Paul, Sarah, Niels;
+# 8 - Aan welke opdracht werkte de Mol aan het einde van 'Steentje bijdragen':
+# 1: Rick-Paul, Sinan, Merel; 2: Jamie, Niels, Sarah;
+# 16 - Welke verkeersregel kreeg de Mol toegewezen tijdens de opdracht 'Links/Rechts':
+# 1: Jamie, Merel; 2: Sarah, Sinan; 3: Rick-Paul, Niels;
+# 18 - Hoe vaak was de Mol op tijd bij Rik tijdens de opdracht 'Links/Rechts':
+# 1: Merel, Niels, Jamie, Rick-Paul; 2: Sinan; 3: Sarah;
+# 20 - Wie is de Mol:
+# 1: Jamie; 2: Merel; 3: Niels; 4: Rick-Paul; 5: Sarah; 6: Sinan;
+# Antwoorden: Jamie (6, 2), Rick-Paul (16, 1) (1 joker), Sinan (18, 1), Niels (7, 1), Sarah (20, 1), Merel (8, 1)
+players6 = [Candidates.JAMIE_19, Candidates.MEREL_19, Candidates.NIELS_19, Candidates.RICK_PAUL_19, Candidates.SARAH_19,
+            Candidates.SINAN_19]
+question6_6 = Question({1: [Candidates.NIELS_19, Candidates.JAMIE_19, Candidates.SARAH_19],
+                        2: [Candidates.MEREL_19, Candidates.SINAN_19, Candidates.RICK_PAUL_19]})
+question6_7 = Question({1: [Candidates.SINAN_19],
+                        2: [Candidates.JAMIE_19, Candidates.MEREL_19, Candidates.RICK_PAUL_19, Candidates.SARAH_19,
+                            Candidates.NIELS_19]})
+question6_8 = Question({1: [Candidates.RICK_PAUL_19, Candidates.SINAN_19, Candidates.MEREL_19],
+                        2: [Candidates.JAMIE_19, Candidates.NIELS_19, Candidates.SARAH_19]})
+question6_16 = Question({1: [Candidates.JAMIE_19, Candidates.MEREL_19],
+                         2: [Candidates.SARAH_19, Candidates.SINAN_19],
+                         3: [Candidates.RICK_PAUL_19, Candidates.NIELS_19]})
+question6_18 = Question({1: [Candidates.MEREL_19, Candidates.NIELS_19, Candidates.JAMIE_19, Candidates.RICK_PAUL_19],
+                         2: [Candidates.SINAN_19],
+                         3: [Candidates.SARAH_19]})
+question6_20 = Question({1: [Candidates.SARAH_19], 2: [Candidates.MEREL_19], 3: [Candidates.NIELS_19],
+                         4: [Candidates.RICK_PAUL_19], 5: [Candidates.SARAH_19], 6: [Candidates.SINAN_19]})
+result6 = Result(False, [Candidates.JAMIE_19, Candidates.MEREL_19, Candidates.NIELS_19, Candidates.RICK_PAUL_19,
+                         Candidates.SARAH_19, Candidates.SINAN_19])
+episode6 = Episode(players6, result6,
+                   {Candidates.JAMIE_19: TestInput({6: 2}), Candidates.RICK_PAUL_19: TestInput({16: 1}, jokers = 1),
+                    Candidates.SINAN_19: TestInput({18: 1}), Candidates.NIELS_19: TestInput({7: 1}),
+                    Candidates.SARAH_19: TestInput({20: 1}), Candidates.MEREL_19: TestInput({8: 1})},
+                    {6: question6_6, 7: question6_7, 8: question6_8, 16: question6_16, 18: question6_18, 20: question6_20})
+
 # Aflevering 7 (afvallers: Jamie, Rick)
 # Vragen:
 # 6 - Naar wie kon de Mol kisten verplaatsen tijdens de opdracht 'Getouwtrek':
@@ -252,4 +292,4 @@ episode8 = Episode(players8, result8,
                     Candidates.SARAH_19: TestInput({3: 1}), Candidates.NIELS_19: TestInput(immunity = True)},
                     {3: question8_3, 4: question8_4, 5: question8_5})
 
-season19 = (players1, {1: episode1, 2: episode2, 3: episode3, 4: episode4, 5: episode5, 7: episode7, 8: episode8})
+season19 = (players1, {1: episode1, 2: episode2, 3: episode3, 4: episode4, 5: episode5, 6: episode6, 7: episode7, 8: episode8})

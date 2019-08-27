@@ -2,7 +2,7 @@ from types import SimpleNamespace
 
 
 class Episode(SimpleNamespace):
-    def __init__(self, players, result, test_inputs, visible_questions, num_questions = 20):
+    def __init__(self, players, result, test_inputs, visible_questions, num_questions = 20, skip_regression = False):
         """ Constructor for Episode (only include episodes that give information about who dropped off)
         Args:
             players (list): The players (string format) that participate in the final test of the episode
@@ -12,10 +12,13 @@ class Episode(SimpleNamespace):
             visible_questions (dict): The questions of the test that were visible for viewers (key is the question
             number which is an integer and the values are Question objects)
             num_questions (int): The total number of questions the test had
+            skip_regression (bool): When true then the episode is not used for training. Also it is skipped in the
+            forward answer regression as prediction.
         """
         self.initialize_test(players, test_inputs)
         super().__init__(players = players, result = result, test_inputs = test_inputs, visible_questions = visible_questions,
-                         num_questions = num_questions, num_invisible_questions = num_questions - len(visible_questions))
+                         num_questions = num_questions, num_invisible_questions = num_questions - len(visible_questions),
+                         skip_regression = skip_regression)
 
     def initialize_test(self, players, test_inputs):
         """ For players not contained in test_inputs do not give any information about questions and use 0 jokers """
